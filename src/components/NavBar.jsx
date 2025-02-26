@@ -9,7 +9,7 @@ const NavBar = ({ Menus }) => {
     <div className=" font-roboto-flex flex-1 flex justify-between text-sm my-2">
       <div className="mx-2 text-[#DBE9FF] space-y-1">
         <div className="flex gap-1 font-normal">
-          <p className=" "> {activeMenu ? activeMenu.title : ""}</p> /
+          <p className=" "> {activeMenu ? activeMenu.title : ""}</p>/
           <p>{activeMenu ? activeMenu.title : ""}</p>
         </div>
         <p className="text-white font-semibold ">
