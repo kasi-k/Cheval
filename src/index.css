@@ -6,3 +6,8 @@
 @theme {
   --font-roboto-flex: "Roboto+Flex", sans-serif;
 }
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+      display: none;
+  }
+}

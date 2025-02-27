@@ -61,7 +61,7 @@ const Layout = () => {
   return (
     <div className=" font-roboto-flex flex dark:bg-[#282828] bg-blue-400 lg:py-6 lg:pl-6 md:py-6 md:pl-6  w-full h-screen">
       {/* Sidebar */}
-      <div className=" dark:bg-black dark:text-white bg-white text-black rounded-xl h-full text-nowrap lg:w-2/12 md:w-3/12 lg:block md:block hidden ">
+      <div className=" dark:bg-black dark:text-white bg-white text-black rounded-xl h-full text-nowrap w-72 lg:block md:block hidden">
         <div className="flex justify-center my-2">
           <img src={Logo} alt="Logo Image" className="w-52" />
         </div>
@@ -74,7 +74,8 @@ const Layout = () => {
                   <li
                     className={`cursor-pointer flex items-center rounded-md mx-1 p-2 mt-1 pl-3 transition-all duration-700 hover:bg-[#00ADBF] hover:font-semibold
                       ${
-                        location.pathname && location.pathname.startsWith(menu.to)
+                        location.pathname &&
+                        location.pathname.startsWith(menu.to)
                           ? "bg-[#00ADBF] font-semibold dark:text-black"
                           : ""
                       }
@@ -90,9 +91,7 @@ const Layout = () => {
                       >
                         {menu.icon}{" "}
                       </div>
-                      <span
-                        className={`text-md flex-1 duration-3 `}
-                      >
+                      <span className={`text-md flex-1 duration-3 `}>
                         {menu.title}
                       </span>
                     </div>
@@ -103,14 +102,10 @@ const Layout = () => {
           </ul>
         </div>
       </div>
-
-      {/* Main Content */}
-      <div className="flex-1 flex flex-col px-2">
-        {/* Header */}
-        <Headers Menus={Menus} />
-
+      <div className="w-full overflow-auto mx-2 ">
         {/* Content Area */}
-        <div className="p-2 overflow-auto ">
+        <Headers Menus={Menus} />
+        <div className="">
           {/* Outlet for nested routes */}
           <Outlet />
         </div>

@@ -135,8 +135,9 @@ const BookingEnquiry = () => {
   };
   return (
     <>
-      <div className="">
-        <table className="font-roboto-flex w-full bg-[#1D1D1D] rounded-lg  text-white">
+      <div className="mx-2 h-[570px]">
+        <div className="overflow-auto no-scrollbar">
+        <table className="font-roboto-flex bg-[#1D1D1D] rounded-lg w-full text-white whitespace-nowrap">
           <thead>
             <tr className=" font-semibold text-sm border-b-2 border-black">
               {[
@@ -192,7 +193,7 @@ const BookingEnquiry = () => {
                     <p className=" cursor-pointer p-1.5  bg-green-200 text-green-600 rounded-sm">
                       <MdOutlineRemoveRedEye />
                     </p>
-                    <p className="ml-4 p-1.5  bg-pink-200 text-red-500 rounded-sm">
+                    <p className="mx-2 p-1.5  bg-pink-200 text-red-500 rounded-sm">
                       {" "}
                       <RiDeleteBinLine />
                     </p>
@@ -201,13 +202,14 @@ const BookingEnquiry = () => {
               ))}
           </tbody>
         </table>
-        <Pagination
+        </div>
+      </div>
+      <Pagination
         totalItems={EnquiryData.length}
         itemsPerPage={itemsPerPage}
         currentPage={currentPage}
         onPageChange={handlePageChange}
       />
-      </div>
     </>
   );
 };

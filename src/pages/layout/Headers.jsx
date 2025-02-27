@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 import NavBar from "../../components/NavBar";
+import Logo from "../../assets/Cheval Logo.png";
 const Headers = ({ Menus }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -20,11 +21,11 @@ const Headers = ({ Menus }) => {
       </p>
 
       {isDropdownOpen && (
-        <div className="absolute right-0 top-9 w-full dark:bg-black bg-white dark:text-white  shadow-md lg:hidden md:block block">
-          <div className="flex gap-2 items-center pt-3 mx-3">
-            <p>logo</p>
+        <div className="absolute  right-3 w-[395px]  dark:bg-black bg-white dark:text-white  shadow-md lg:hidden md:block block rounded-2xl">
+          <div className="flex gap-2 justify-center  items-center pt-3 mx-3">
+            <img src={Logo} alt="Logo Image" className=" w-60" />
           </div>
-          <ul className="flex flex-wrap py-5">
+          <ul className="grid  justify-center items-center py-5 ">
             {Menus.map((menu, index) => (
               <NavLink to={menu.to} onClick={menu.onClick} key={index}>
                 <li
@@ -37,7 +38,7 @@ const Headers = ({ Menus }) => {
                     `}
                   onClick={toggleDropdown}
                 >
-                  <div className="flex items-center gap-x-6 px-2">
+                  <div className="flex items-center gap-x-6 px-2 ">
                     <div
                       className={`p-2 rounded-md transition-all duration-300 size-8  ${
                         location.pathname.startsWith(menu.to)
@@ -47,7 +48,7 @@ const Headers = ({ Menus }) => {
                     >
                       {menu.icon}{" "}
                     </div>
-                    <span className="font-poppins text-lg flex-1 duration-300 whitespace-nowrap">
+                    <span className="font-poppins text-lg  duration-300">
                       {menu.title}
                     </span>
                   </div>
