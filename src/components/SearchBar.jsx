@@ -1,17 +1,24 @@
-import { Search } from "lucide-react";
+import { createContext, useContext, useState } from "react";
 
-const SearchBar = ({ onSearch }) => {
-  return (
-    <div className="mb-4 flex items-center border rounded-full p-2 bg-white dark:bg-[#282828]">
-      <Search className="size-5 text-gray-500" />
-      <input
-        type="text"
-        className="w-full outline-none px-2 bg-transparent text-black dark:text-white"
-        placeholder="Search Enquiries..."
-        onChange={(e) => onSearch(e.target.value)}
-      />
-    </div>
-  );
+// Create Context
+const SearchBar = createContext();
+
+// Custom hook to use search context
+export const useSearch = () => {
+  const context = useContext(SearchBar);
+  if (!context) {
+    throw new Error("useSearch must be used within a SearchProvider");
+  }
+  return context;
 };
 
-export default SearchBar;
+// SearchProvider Component
+export const SearchProvider = ({ children }) => {
+  const [searchTerm, setSearchTerm] = useState("");
+
+  return (
+    <SearchBar.Provider value={{ searchTerm, setSearchTerm }}>
+      {children}
+    </SearchBar.Provider>
+  );
+};

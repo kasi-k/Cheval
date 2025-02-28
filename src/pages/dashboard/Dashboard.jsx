@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import NavBar from "../../components/NavBar";
 
 const Dashboard = () => {
   return (
-    <div>Dashboard</div>
-  )
-}
+    <div>
+      <NavBar title="Dashboard" pagetitle="Main Dashboard" />
+    </div>
+  );
+};
 
-export default Dashboard
+export default Dashboard;

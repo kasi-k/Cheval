@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
-import NavBar from "../../components/NavBar";
 import Logo from "../../assets/Cheval Logo.png";
 import  Icon from "../../assets/Logo Icon.png";
 const Headers = ({ Menus }) => {
@@ -59,10 +58,6 @@ const Headers = ({ Menus }) => {
           </ul>
         </div>
       )}
-
-      <div className="flex justify-between">
-        <NavBar Menus={Menus} />
-      </div>
     </div>
   );
 };

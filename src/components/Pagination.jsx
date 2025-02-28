@@ -74,7 +74,7 @@ const Pagination = ({
           ) : (
             <button
               key={index}
-              className={`px-3 py-1.5 text-sm rounded-md ${
+              className={`px-2.5 py-1 text-sm rounded-md ${
                 currentPage === page
                   ? " dark:bg-white bg-gray-800 px-2 py-1 font-medium dark:text-black text-white "
                   : "dark:text-white "
