@@ -137,9 +137,9 @@ const BookingEnquiry = () => {
     <>
       <div className="mx-2 h-[570px]">
         <div className="overflow-auto no-scrollbar">
-        <table className="font-roboto-flex bg-[#1D1D1D] rounded-lg w-full text-white whitespace-nowrap">
+        <table className="font-roboto-flex dark:bg-[#1D1D1D] bg-white rounded-lg w-full dark:text-white text-gray-800 whitespace-nowrap">
           <thead>
-            <tr className=" font-semibold text-sm border-b-2 border-black">
+            <tr className=" font-semibold text-sm border-b-2 dark:border-black border-gray-400">
               {[
                 "S.no",
                 "Enquiry No",
@@ -152,18 +152,18 @@ const BookingEnquiry = () => {
               ].map((heading) => (
                 <th key={heading} className="p-3.5">
                   <h1 className="flex items-center justify-center  gap-1">
-                    {heading} <HiArrowsUpDown className="text-white" />
+                    {heading} <HiArrowsUpDown className="dark:text-white" />
                   </h1>
                 </th>
               ))}
               <th>Action</th>
             </tr>
           </thead>
-          <tbody className=" bg-[#1D1D1D] cursor-default">
+          <tbody className=" dark:bg-[#1D1D1D] dark:text-white text-gray-600 cursor-default">
             {data &&
               data.map((data, index) => (
                 <tr
-                  className="border-b-2 border-black text-center text-sm "
+                  className="border-b-2 dark:border-black border-gray-400 text-center text-sm  "
                   key={index}
                 >
                   <td className="">{data.sno}</td>

@@ -85,8 +85,8 @@ const Layout = () => {
                       <div
                         className={`p-2 rounded-md transition-all duration-300 size-8  ${
                           location.pathname.startsWith(menu.to)
-                            ? "bg-[#005D67] dark:text-white"
-                            : "bg-[#282828]"
+                            ? "bg-[#005D67] dark:text-white text-white"
+                            : "bg-[#282828] text-white"
                         }`}
                       >
                         {menu.icon}{" "}
