@@ -88,7 +88,7 @@ const DailyAvailability = () => {
         vehicletype: "Truck",
         currentlocationpincode: "600095",
         preferredstate: "Tamilnadu",
-        preferreddistrict: "Madurai,Coimbatore,Salem,",
+        preferreddistrict: "Madurai,Coimbatore,Salem",
       },
   ];
 

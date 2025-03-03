@@ -2,15 +2,12 @@ import React, { useEffect, useState } from "react";
 import { HiArrowsUpDown } from "react-icons/hi2";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
-import { FiEdit2 } from "react-icons/fi";
 import Pagination from "../../components/Pagination";
 import { BiFilterAlt } from "react-icons/bi";
 import NavBar from "../../components/NavBar";
 import { useSearch } from "../../components/SearchBar";
-import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
-import StarProgress from "../../components/StarProgress";
 
-const DriverManagement = () => {
+const HelpSupport = () => {
   const { searchTerm } = useSearch(); // Get search term from context
   const [currentPage, setCurrentPage] = useState(1);
   const [filteredData, setFilteredData] = useState([]);
@@ -19,13 +16,13 @@ const DriverManagement = () => {
 
   useEffect(() => {
     if (!searchTerm) {
-      setFilteredData(DriverData); // Show all data if search is empty
+      setFilteredData(TicketData); // Show all data if search is empty
       return;
     }
 
     const lowerSearchTerm = searchTerm.toString().toLowerCase();
 
-    const filtered = DriverData.filter((item) =>
+    const filtered = TicketData.filter((item) =>
       Object.values(item).some((value) => {
         const lowerValue = value.toString().toLowerCase();
 
@@ -50,80 +47,63 @@ const DriverManagement = () => {
     startIndex + itemsPerPage
   );
 
-  const DriverData = [
+  const TicketData = [
     {
       sno: "1",
-      drivername: "name",
-      phonenumber: "9874561230",
-      address: "Madurai",
-      license: "8924647",
-      experience: "2years",
-      ratings: <StarProgress rating={4.5} />,
+      ticketid: "#24647",
+      datacreated: "11 feb 2025",
+      category: "Delivery",
+      priority: "high",
+      status: "closed",
+      assignedto: "Tanker",
+      lastupdated: "14 feb 2025",
     },
     {
       sno: "2",
-      drivername: "name",
-      phonenumber: "9784651230",
-      address: "Salem",
-      license: "8924647",
-      experience: "3years",
-      ratings: <StarProgress rating={1.75} />,
+      ticketid: "#24648",
+      datacreated: "11 feb 2025",
+      category: "Delivery",
+      priority: "low",
+      status: "resolved",
+      assignedto: "Mini Truck",
+      lastupdated: "15 feb 2025",
     },
+
     {
       sno: "3",
-      drivername: "name",
-      phonenumber: "9745681230",
-      address: "Coimbatore",
-      license: "8924647",
-      experience: "4years",
-      ratings: <StarProgress rating={2} />,
+      ticketid: "#24648",
+      datacreated: "15 feb 2025",
+      category: "Delivery",
+      priority: "medium",
+      status: "in progress",
+      assignedto: "Truck",
+      lastupdated: "18 feb 2025",
     },
-    {
-      sno: "4",
-      drivername: "name",
-      phonenumber: "874552309",
-      address: "Madurai",
-      license: "8924647",
-      experience: "5years",
-      ratings: <StarProgress rating={3} />,
-    },
-    {
-      sno: "5",
-      drivername: "name",
-      phonenumber: "8564791230",
-      address: "Salem",
-      license: "8924647",
-      experience: "2years",
-      ratings: <StarProgress rating={4} />,
-    },
-    
   ];
 
   return (
     <>
-      <NavBar title="Driver Management" pagetitle="Driver Table" />
-      <div className="font-roboto-flex dark:text-white flex justify-end items-center mx-2 mb-2 gap-2">
+      <NavBar title="Help & Support" pagetitle="Table" />
+      <div className="font-roboto-flex dark:text-white flex justify-end items-center mx-2 mb-2">
         <p className="dark:bg-[#1D1D1D] bg-white flex items-center px-4 py-2 gap-1.5 rounded-sm text-xs font-medium">
           Filter
           <BiFilterAlt />
         </p>
-        <p className="dark:bg-[#00ADBF] bg-white flex items-center px-4 py-2 gap-1.5 rounded-sm text-sm font-semibold  w-48 justify-center text-black">
-          + Add Driver
-        </p>
       </div>
-      <div className="mx-2  h-[530px] dark:bg-[#1D1D1D] bg-white rounded-lg">
+      <div className="mx-2  h-[532px] dark:bg-[#1D1D1D] bg-white rounded-lg">
         <div className="overflow-auto no-scrollbar">
           <table className="font-roboto-flex w-full dark:text-white text-gray-800 whitespace-nowrap">
             <thead>
               <tr className=" font-semibold text-sm border-b-[1px] dark:border-black border-gray-400">
                 {[
                   "S.no",
-                  "Driver Name",
-                  "Phone Number",
-                  "Address ",
-                  "License",
-                  "Experience",
-                  "Ratings",
+                  "Ticket ID",
+                  "Date Created",
+                  "Category",
+                  "Priority",
+                  "Status",
+                  "Assigned to",
+                  "Last Updated",
                 ].map((heading) => (
                   <th key={heading} className="p-3.5">
                     <h1 className="flex items-center justify-center  gap-1">
@@ -142,22 +122,44 @@ const DriverManagement = () => {
                     key={index}
                   >
                     <td className="">{data.sno}</td>
-                    <td>{data.drivername}</td>
-                    <td>{data.phonenumber}</td>
-                    <td>{data.address}</td>
-                    <td>{data.license}</td>
-                    <td>{data.experience}</td>
-                    <td>{data.ratings}</td>
+                    <td>{data.ticketid}</td>
+                    <td>{data.datacreated}</td>
+                    <td>{data.category}</td>
+                    <td>
+                      <div
+                        className={`rounded-sm mx-5 py-1.5
+                                  
+                                  ${
+                                    {
+                                      high: "text-red-500 bg-red-200 ",
+                                      medium: "text-yellow-600 bg-yellow-100  ",
+                                      low: "text-green-600 bg-green-100",
+                                    }[data.priority]
+                                  }`}
+                      >
+                        {data.priority.charAt(0).toUpperCase() +
+                          data.priority.slice(1).toLowerCase()}
+                      </div>
+                    </td>
+                    <td
+                      className={`
+                                  
+                           ${
+                             {
+                               closed: "text-green-600",
+                               "in progress": "text-yellow-600 ",
+                               resolved: "text-sky-500 ",
+                             }[data.status]
+                           }`}
+                    >
+                      {data.status.charAt(0).toUpperCase() +
+                        data.status.slice(1).toLowerCase()}
+                    </td>
+                    <td>{data.assignedto}</td>
+                    <td className="">{data.lastupdated}</td>
                     <td className="flex items-center justify-center py-2.5">
-                      <p className="p-1.5 bg-blue-300 text-blue-500 rounded-sm mx-2">
-                        <FiEdit2 />
-                      </p>
                       <p className=" cursor-pointer p-1.5  bg-green-200 text-green-600 rounded-sm">
                         <MdOutlineRemoveRedEye />
-                      </p>
-                      <p className="mx-2 p-1.5  bg-pink-200 text-red-500 rounded-sm">
-                        {" "}
-                        <RiDeleteBinLine />
                       </p>
                     </td>
                   </tr>
@@ -183,4 +185,4 @@ const DriverManagement = () => {
   );
 };
 
-export default DriverManagement;
+export default HelpSupport;
