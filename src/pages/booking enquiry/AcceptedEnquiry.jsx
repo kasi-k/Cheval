@@ -6,6 +6,9 @@ const AcceptedEnquiry = () => {
     <>
    <NavBar title="Booking Enquiries" pagetitle="Accepted"/>
     <div>
+      <div>
+        <p>Status:Accepted</p>
+      </div>
 
     </div>
     </>
