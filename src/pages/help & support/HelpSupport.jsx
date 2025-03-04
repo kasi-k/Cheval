@@ -6,6 +6,7 @@ import Pagination from "../../components/Pagination";
 import { BiFilterAlt } from "react-icons/bi";
 import NavBar from "../../components/NavBar";
 import { useSearch } from "../../components/SearchBar";
+import { TicketData } from "../../components/Data";
 
 const HelpSupport = () => {
   const { searchTerm } = useSearch(); // Get search term from context
@@ -47,50 +48,16 @@ const HelpSupport = () => {
     startIndex + itemsPerPage
   );
 
-  const TicketData = [
-    {
-      sno: "1",
-      ticketid: "#24647",
-      datacreated: "11 feb 2025",
-      category: "Delivery",
-      priority: "high",
-      status: "closed",
-      assignedto: "Tanker",
-      lastupdated: "14 feb 2025",
-    },
-    {
-      sno: "2",
-      ticketid: "#24648",
-      datacreated: "11 feb 2025",
-      category: "Delivery",
-      priority: "low",
-      status: "resolved",
-      assignedto: "Mini Truck",
-      lastupdated: "15 feb 2025",
-    },
-
-    {
-      sno: "3",
-      ticketid: "#24648",
-      datacreated: "15 feb 2025",
-      category: "Delivery",
-      priority: "medium",
-      status: "in progress",
-      assignedto: "Truck",
-      lastupdated: "18 feb 2025",
-    },
-  ];
-
   return (
     <>
       <NavBar title="Help & Support" pagetitle="Table" />
       <div className="font-roboto-flex dark:text-white flex justify-end items-center mx-2 mb-2">
-        <p className="dark:bg-[#1D1D1D] bg-white flex items-center px-4 py-2 gap-1.5 rounded-sm text-xs font-medium">
+        <p className="dark:bg-darkgray bg-white flex items-center px-4 py-2 gap-1.5 rounded-sm text-xs font-medium">
           Filter
           <BiFilterAlt />
         </p>
       </div>
-      <div className="mx-2  h-[532px] dark:bg-[#1D1D1D] bg-white rounded-lg">
+      <div className="mx-2  h-[532px] dark:bg-darkgray bg-white rounded-lg">
         <div className="overflow-auto no-scrollbar">
           <table className="font-roboto-flex w-full dark:text-white text-gray-800 whitespace-nowrap">
             <thead>
@@ -114,7 +81,7 @@ const HelpSupport = () => {
                 <th>Action</th>
               </tr>
             </thead>
-            <tbody className=" dark:bg-[#1D1D1D] dark:text-white text-gray-600 cursor-default">
+            <tbody className=" dark:bg-darkgray dark:text-white text-gray-600 cursor-default">
               {paginatedData.length > 0 ? (
                 paginatedData.map((data, index) => (
                   <tr
@@ -127,7 +94,7 @@ const HelpSupport = () => {
                     <td>{data.category}</td>
                     <td>
                       <div
-                        className={`rounded-sm mx-5 py-1.5
+                        className={`rounded-sm mx-5 py-1.5 first-letter:uppercase
                                   
                                   ${
                                     {
@@ -137,12 +104,11 @@ const HelpSupport = () => {
                                     }[data.priority]
                                   }`}
                       >
-                        {data.priority.charAt(0).toUpperCase() +
-                          data.priority.slice(1).toLowerCase()}
+                        {data.priority}
                       </div>
                     </td>
                     <td
-                      className={`
+                      className={`first-letter:uppercase
                                   
                            ${
                              {
@@ -152,8 +118,7 @@ const HelpSupport = () => {
                              }[data.status]
                            }`}
                     >
-                      {data.status.charAt(0).toUpperCase() +
-                        data.status.slice(1).toLowerCase()}
+                      {data.status}
                     </td>
                     <td>{data.assignedto}</td>
                     <td className="">{data.lastupdated}</td>

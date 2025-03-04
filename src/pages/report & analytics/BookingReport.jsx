@@ -4,6 +4,7 @@ import { RiDeleteBinLine } from "react-icons/ri";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
 import Pagination from "../../components/Pagination";
 import { useSearch } from "../../components/SearchBar";
+import { BookingReportData } from "../../components/Data";
 
 const BookingReport = () => {
   const { searchTerm } = useSearch(); // Get search term from context
@@ -45,28 +46,11 @@ const BookingReport = () => {
     startIndex + itemsPerPage
   );
 
-  const BookingReportData = [
-    {
-      sno: "1",
-      date: "11 feb 2025",
-      bidaccepted: "5678",
-      bidamount: "567",
-      paymentcollected: "7894",
-      paymentbalance: "7684",
-    },
-    {
-      sno: "2",
-      date: "14 feb 2025",
-      bidaccepted: "5487",
-      bidamount: "548",
-      paymentcollected: "5872",
-      paymentbalance: "5678",
-    }
-  ];
+
 
   return (
     <>
-      <div className="mx-2  h-[514px] dark:bg-[#1D1D1D] bg-white rounded-lg">
+      <div className="mx-2  h-[514px] dark:bg-darkgray bg-white rounded-lg">
         <div className="overflow-auto no-scrollbar">
           <table className="font-roboto-flex w-full dark:text-white text-gray-800 whitespace-nowrap">
             <thead>
@@ -88,7 +72,7 @@ const BookingReport = () => {
                 <th>Action</th>
               </tr>
             </thead>
-            <tbody className=" dark:bg-[#1D1D1D] dark:text-white text-gray-600 cursor-default">
+            <tbody className=" dark:bg-darkgray dark:text-white text-gray-600 cursor-default">
               {paginatedData.length > 0 ? (
                 paginatedData.map((data, index) => (
                   <tr

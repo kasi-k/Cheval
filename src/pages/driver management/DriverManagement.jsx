@@ -9,6 +9,7 @@ import NavBar from "../../components/NavBar";
 import { useSearch } from "../../components/SearchBar";
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 import StarProgress from "../../components/StarProgress";
+import { DriverData } from "../../components/Data";
 
 const DriverManagement = () => {
   const { searchTerm } = useSearch(); // Get search term from context
@@ -50,68 +51,19 @@ const DriverManagement = () => {
     startIndex + itemsPerPage
   );
 
-  const DriverData = [
-    {
-      sno: "1",
-      drivername: "name",
-      phonenumber: "9874561230",
-      address: "Madurai",
-      license: "8924647",
-      experience: "2years",
-      ratings: <StarProgress rating={4.5} />,
-    },
-    {
-      sno: "2",
-      drivername: "name",
-      phonenumber: "9784651230",
-      address: "Salem",
-      license: "8924647",
-      experience: "3years",
-      ratings: <StarProgress rating={1.75} />,
-    },
-    {
-      sno: "3",
-      drivername: "name",
-      phonenumber: "9745681230",
-      address: "Coimbatore",
-      license: "8924647",
-      experience: "4years",
-      ratings: <StarProgress rating={2} />,
-    },
-    {
-      sno: "4",
-      drivername: "name",
-      phonenumber: "874552309",
-      address: "Madurai",
-      license: "8924647",
-      experience: "5years",
-      ratings: <StarProgress rating={3} />,
-    },
-    {
-      sno: "5",
-      drivername: "name",
-      phonenumber: "8564791230",
-      address: "Salem",
-      license: "8924647",
-      experience: "2years",
-      ratings: <StarProgress rating={4} />,
-    },
-    
-  ];
-
   return (
     <>
       <NavBar title="Driver Management" pagetitle="Driver Table" />
       <div className="font-roboto-flex dark:text-white flex justify-end items-center mx-2 mb-2 gap-2">
-        <p className="dark:bg-[#1D1D1D] bg-white flex items-center px-4 py-2 gap-1.5 rounded-sm text-xs font-medium">
+        <p className="dark:bg-darkgray bg-white flex items-center px-4 py-2 gap-1.5 rounded-sm text-xs font-medium">
           Filter
           <BiFilterAlt />
         </p>
-        <p className="dark:bg-[#00ADBF] bg-white flex items-center px-4 py-2 gap-1.5 rounded-sm text-sm font-semibold  w-48 justify-center text-black">
+        <p className="dark:bg-sidebar bg-white flex items-center px-4 py-2 gap-1.5 rounded-sm text-sm font-semibold  w-48 justify-center text-black">
           + Add Driver
         </p>
       </div>
-      <div className="mx-2  h-[530px] dark:bg-[#1D1D1D] bg-white rounded-lg">
+      <div className="mx-2  h-[530px] dark:bg-darkgray bg-white rounded-lg">
         <div className="overflow-auto no-scrollbar">
           <table className="font-roboto-flex w-full dark:text-white text-gray-800 whitespace-nowrap">
             <thead>
@@ -134,7 +86,7 @@ const DriverManagement = () => {
                 <th>Action</th>
               </tr>
             </thead>
-            <tbody className=" dark:bg-[#1D1D1D] dark:text-white text-gray-600 cursor-default">
+            <tbody className=" dark:bg-darkgray dark:text-white text-gray-600 cursor-default">
               {paginatedData.length > 0 ? (
                 paginatedData.map((data, index) => (
                   <tr

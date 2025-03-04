@@ -7,6 +7,7 @@ import Pagination from "../../components/Pagination";
 import { BiFilterAlt } from "react-icons/bi";
 import NavBar from "../../components/NavBar";
 import { useSearch } from "../../components/SearchBar";
+import { VehicleData } from "../../components/Data";
 
 const VehicleManagement = () => {
   const { searchTerm } = useSearch(); // Get search term from context
@@ -48,67 +49,19 @@ const VehicleManagement = () => {
     startIndex + itemsPerPage
   );
 
-  const VehicleData = [
-    {
-      sno: "1",
-      vehicletype: "Truck",
-      vehiclemodel: "SwiftLogix",
-      vehicleowner: "name",
-      ownerphone: "8924647",
-      vehicleno: "#24647",
-      insurance: "824647",
-    },
-    {
-      sno: "2",
-      vehicletype: "Mini Truck",
-      vehiclemodel: "MoveMate",
-      vehicleowner: "name",
-      ownerphone: "7824647",
-      vehicleno: "#24648",
-      insurance: "724647",
-    },
-    {
-      sno: "3",
-      vehicletype: "Trailer",
-      vehiclemodel: "TransFast",
-      vehicleowner: "name",
-      ownerphone: "624647",
-      vehicleno: "#24649",
-      insurance: "85412",
-    },
-    {
-      sno: "4",
-      vehicletype: "Container Truck",
-      vehiclemodel: "FleetFlow",
-      vehicleowner: "name",
-      ownerphone: "879456",
-      vehicleno: "#24650",
-      insurance: "324647",
-    },
-    {
-      sno: "5",
-      vehicletype: "Mini Truck",
-      vehiclemodel: "QuickHaul",
-      vehicleowner: "name",
-      ownerphone: "23457",
-      vehicleno: "#24651",
-      insurance: "74102",
-    },
-  ];
-
   return (
     <>
       <NavBar title="Vehicle Management" pagetitle="Vehicle Table" />
       <div className="font-roboto-flex dark:text-white flex justify-end items-center mx-2 mb-2 gap-2">
-        <p className="dark:bg-[#00ADBF] bg-white flex items-center px-4 py-2 gap-1.5 rounded-sm text-sm font-semibold  w-48 justify-center text-black">
+        <p className="dark:bg-sidebar bg-white flex items-center px-4 py-2 gap-1.5 rounded-sm text-sm font-semibold  w-48 justify-center text-black">
           + Add Vehicle
         </p>
-        <p className="dark:bg-[#1D1D1D] bg-white flex items-center px-4 py-2 gap-1.5 rounded-sm text-xs font-medium">
+        <p className="dark:bg-darkgray bg-white flex items-center px-4 py-2 gap-1.5 rounded-sm text-xs font-medium">
           Filter
           <BiFilterAlt />
         </p>
       </div>
-      <div className="mx-2  h-[530px] dark:bg-[#1D1D1D] bg-white rounded-lg">
+      <div className="mx-2  h-[530px] dark:bg-darkgray bg-white rounded-lg">
         <div className="overflow-auto no-scrollbar">
           <table className="font-roboto-flex w-full dark:text-white text-gray-800 whitespace-nowrap">
             <thead>
@@ -131,7 +84,7 @@ const VehicleManagement = () => {
                 <th>Action</th>
               </tr>
             </thead>
-            <tbody className=" dark:bg-[#1D1D1D] dark:text-white text-gray-600 cursor-default">
+            <tbody className=" dark:bg-darkgray dark:text-white text-gray-600 cursor-default">
               {paginatedData.length > 0 ? (
                 paginatedData.map((data, index) => (
                   <tr

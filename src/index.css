@@ -5,6 +5,9 @@
 
 @theme {
   --font-roboto-flex: "Roboto+Flex", sans-serif;
+  --color-sidebar-icon: #005D67 ;
+  --color-sidebar : #00ADBF;
+  --color-darkgray : #1D1D1D ;
 }
 @layer utilities {
   .no-scrollbar::-webkit-scrollbar {

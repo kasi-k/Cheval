@@ -6,6 +6,7 @@ import Pagination from "../../components/Pagination";
 import { BiFilterAlt } from "react-icons/bi";
 import NavBar from "../../components/NavBar";
 import { useSearch } from "../../components/SearchBar";
+import { InvoiceData } from "../../components/Data";
 
 const InvoicePayments = () => {
   const { searchTerm } = useSearch(); // Get search term from context
@@ -48,37 +49,18 @@ const InvoicePayments = () => {
     startIndex + itemsPerPage
   );
 
-  const InvoiceData = [
-    {
-        sno: "1",
-        invoicenumber: "#24647",
-        invoicedate: "11 feb 2025",
-        customername: "name",
-        customercontact: "000000000",
-        amountreceived: "567",
-        amountpending: "58741",
-      },
-      {
-        sno: "2",
-        invoicenumber: "#24648",
-        invoicedate: "12 feb 2025",
-        customername: "name",
-        customercontact: "0000000",
-        amountreceived: "567",
-        amountpending: "65478",
-      },
-  ];
+
 
   return (
     <>
       <NavBar title="Invoice & Payments" pagetitle="Invoice Table" />
       <div className="font-roboto-flex dark:text-white flex justify-end items-center mx-2 mb-2">
-        <p className="dark:bg-[#1D1D1D] bg-white flex items-center px-4 py-2 gap-1.5 rounded-sm text-xs font-medium">
+        <p className="dark:bg-darkgray bg-white flex items-center px-4 py-2 gap-1.5 rounded-sm text-xs font-medium">
           Filter
           <BiFilterAlt />
         </p>
       </div>
-      <div className="mx-2  h-[532px] dark:bg-[#1D1D1D] bg-white rounded-lg">
+      <div className="mx-2  h-[532px] dark:bg-darkgray bg-white rounded-lg">
         <div className="overflow-auto no-scrollbar">
           <table className="font-roboto-flex w-full dark:text-white text-gray-800 whitespace-nowrap">
             <thead>
@@ -101,7 +83,7 @@ const InvoicePayments = () => {
                 <th>Action</th>
               </tr>
             </thead>
-            <tbody className=" dark:bg-[#1D1D1D] dark:text-white text-gray-600 cursor-default">
+            <tbody className=" dark:bg-darkgray dark:text-white text-gray-600 cursor-default">
               {paginatedData.length > 0 ? (
                 paginatedData.map((data, index) => (
                   <tr

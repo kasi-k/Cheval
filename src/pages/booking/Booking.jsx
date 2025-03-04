@@ -6,6 +6,7 @@ import Pagination from "../../components/Pagination";
 import { BiFilterAlt } from "react-icons/bi";
 import NavBar from "../../components/NavBar";
 import { useSearch } from "../../components/SearchBar";
+import { BookingData } from "../../components/Data";
 
 const Booking = () => {
   const { searchTerm } = useSearch(); // Get search term from context
@@ -48,69 +49,18 @@ const Booking = () => {
     startIndex + itemsPerPage
   );
 
-  const BookingData = [
-    {
-        sno: "1",
-        enquiryno: "#24647",
-        bookingcompany: "SwiftLogix",
-        shippingdate: "11 feb 2025",
-        from: "name",
-        to: "name",
-        status: "confirmed",
-        driver: "name",
-      },
-      {
-        sno: "2",
-        enquiryno: "#24648",
-        bookingcompany: "MoveMate",
-        shippingdate: "12 feb 2025",
-        from: "name",
-        to: "name",
-        status: "in transmit",
-        driver: "name",
-      },
-      {
-        sno: "3",
-        enquiryno: "#24649",
-        bookingcompany: "TransFast",
-        shippingdate: "13 feb 2025",
-        from: "name",
-        to: "name",
-        status: "completed",
-        driver: "name",
-      },
-      {
-        sno: "4",
-        enquiryno: "#24650",
-        bookingcompany: "FleetFlow",
-        shippingdate: "14 feb 2025",
-        from: "name",
-        to: "name",
-        status: "confirmed",
-        driver: "name",
-      },
-      {
-        sno: "5",
-        enquiryno: "#24651",
-        bookingcompany: "QuickHaul",
-        shippingdate: "15 feb 2025",
-        from: "name",
-        to: "name",
-        status: "confirmed",
-        driver: "name",
-      },
-  ];
+
 
   return (
     <>
       <NavBar title="Booking" pagetitle="Booking Table" />
       <div className="font-roboto-flex dark:text-white flex justify-end items-center mx-2 mb-2">
-        <p className="dark:bg-[#1D1D1D] bg-white flex items-center px-4 py-2 gap-1.5 rounded-sm text-xs font-medium">
+        <p className="dark:bg-darkgray bg-white flex items-center px-4 py-2 gap-1.5 rounded-sm text-xs font-medium">
           Filter
           <BiFilterAlt />
         </p>
       </div>
-      <div className="mx-2  h-[532px] dark:bg-[#1D1D1D] bg-white rounded-lg">
+      <div className="mx-2  h-[532px] dark:bg-darkgray bg-white rounded-lg">
         <div className="overflow-auto no-scrollbar">
           <table className="font-roboto-flex w-full dark:text-white text-gray-800 whitespace-nowrap">
             <thead>
@@ -134,7 +84,7 @@ const Booking = () => {
                 <th>Action</th>
               </tr>
             </thead>
-            <tbody className=" dark:bg-[#1D1D1D] dark:text-white text-gray-600 cursor-default">
+            <tbody className=" dark:bg-darkgray dark:text-white text-gray-600 cursor-default">
               {paginatedData.length > 0 ? (
                 paginatedData.map((data, index) => (
                   <tr
@@ -148,7 +98,7 @@ const Booking = () => {
                     <td>{data.from}</td>
                     <td>{data.to}</td>
                     <td
-                      className={`
+                      className={`first-letter:uppercase
                                   
                            ${
                              {
@@ -158,8 +108,7 @@ const Booking = () => {
                              }[data.status]
                            }`}
                     >
-                      {data.status.charAt(0).toUpperCase() +
-                        data.status.slice(1).toLowerCase()}
+                      {data.status}
                     </td>
                     <td className="">{data.driver}</td>
                     <td className="flex items-center justify-center py-2.5">

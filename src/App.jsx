@@ -11,6 +11,10 @@ import InvoicePayments from "./pages/invoice & payments/InvoicePayments";
 import ReportAnalytics from "./pages/report & analytics/ReportAnalytics";
 import HelpSupport from "./pages/help & support/HelpSupport";
 import Subscription from "./pages/subscription/Subscription";
+import Settings from "./pages/settings/Settings";
+import AcceptedEnquiry from "./pages/booking enquiry/AcceptedEnquiry";
+import NewEnquiry from "./pages/booking enquiry/NewEnquiry";
+import RejectedOrExpired from "./pages/booking enquiry/RejectedOrExpired";
 
 
 const App = () => {
@@ -20,7 +24,12 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route path="/dashboard" element={<Dashboard/>} />
-            <Route path="/booking_enquiries" element={<BookingEnquiry/>} />
+            <Route path="/booking_enquiries" >
+            <Route  index element={<BookingEnquiry/>}/>
+            <Route path="view_accepted" element = {<AcceptedEnquiry/>}/>
+            <Route path="view_new" element = {<NewEnquiry/>}/>
+            <Route path="view_expired-rejected" element = {<RejectedOrExpired/>}/>
+            </Route>
             <Route path="/bookings" element={<Booking/>} />
             <Route path="/daily_availability" element={<DailyAvailability/>} />
             <Route path="/vehicle_management" element={<VehicleManagement/>} />
@@ -29,6 +38,7 @@ const App = () => {
             <Route path="/reports_analytics" element={<ReportAnalytics/>} />
             <Route path="/help_support" element={<HelpSupport/>} />
             <Route path="/subscription" element={<Subscription/>} />
+            <Route path="/settings" element={<Settings/>} />
           </Route>
         </Routes>
       </BrowserRouter>
