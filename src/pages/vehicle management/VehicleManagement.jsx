@@ -9,12 +9,18 @@ import NavBar from "../../components/NavBar";
 import { useSearch } from "../../components/SearchBar";
 import { VehicleData } from "../../components/Data";
 import AddVehicle from "./AddVehicle";
+import EditVehicle from "./EditVehicle";
+import DeleteModal from "../../components/DeleteModal";
+import { useNavigate } from "react-router-dom";
 
 const VehicleManagement = () => {
   const { searchTerm } = useSearch(); // Get search term from context
   const [currentPage, setCurrentPage] = useState(1);
   const [filteredData, setFilteredData] = useState([]);
-  const [addVehcile, setAddVehicle] = useState(false)
+  const [addVehcile, setAddVehicle] = useState(false);
+  const [editVehcile, setEditVehicle] = useState(false);
+  const [deleteModal, setDeleteModal] = useState(false);
+  const navigate = useNavigate();
 
   const itemsPerPage = 10;
 
@@ -50,18 +56,32 @@ const VehicleManagement = () => {
     startIndex,
     startIndex + itemsPerPage
   );
- const handleAddVehicle = () =>{
-    setAddVehicle(true)
- }
+  const handleAddVehicle = () => {
+    setAddVehicle(true);
+  };
+  const handleEditVehicle = () => {
+    setEditVehicle(true);
+  };
+
+  const handleViewVehicle = () => {
+    navigate ("view_vehicle")
+  };
+
+  const handleDelete = () => {
+    setDeleteModal(true);
+  };
 
   return (
     <>
       <NavBar title="Vehicle Management" pagetitle="Vehicle Table" />
       <div className="font-roboto-flex dark:text-white flex justify-end items-center mx-2 mb-2 gap-2">
-        <p  onClick = {handleAddVehicle}className="dark:bg-sidebar bg-white flex items-center px-4 py-2 gap-1.5 rounded-sm text-sm font-semibold  w-48 justify-center text-black">
+        <p
+          onClick={handleAddVehicle}
+          className=" cursor-pointer dark:bg-sidebar bg-white flex items-center px-4 py-2 gap-1.5 rounded-sm text-sm font-semibold  w-48 justify-center text-black"
+        >
           + Add Vehicle
         </p>
-        <p className="dark:bg-darkgray bg-white flex items-center px-4 py-2 gap-1.5 rounded-sm text-xs font-medium">
+        <p className="cursor-default dark:bg-darkgray bg-white flex items-center px-4 py-2 gap-1.5 rounded-sm text-xs font-medium">
           Filter
           <BiFilterAlt />
         </p>
@@ -104,13 +124,19 @@ const VehicleManagement = () => {
                     <td>{data.vehicleno}</td>
                     <td>{data.insurance}</td>
                     <td className="flex items-center justify-center py-2.5">
-                      <p className="p-1.5 bg-blue-300 text-blue-500 rounded-sm mx-2">
+                      <p
+                        onClick={handleEditVehicle}
+                        className=" cursor-pointer p-1.5 bg-blue-300 text-blue-500 rounded-sm mx-2"
+                      >
                         <FiEdit2 />
                       </p>
-                      <p className=" cursor-pointer p-1.5  bg-green-200 text-green-600 rounded-sm">
+                      <p onClick={handleViewVehicle} className=" cursor-pointer p-1.5  bg-green-200 text-green-600 rounded-sm">
                         <MdOutlineRemoveRedEye />
                       </p>
-                      <p className="mx-2 p-1.5  bg-pink-200 text-red-500 rounded-sm">
+                      <p
+                        onClick={handleDelete}
+                        className=" cursor-pointer mx-2 p-1.5  bg-pink-200 text-red-500 rounded-sm"
+                      >
                         {" "}
                         <RiDeleteBinLine />
                       </p>
@@ -134,7 +160,11 @@ const VehicleManagement = () => {
         currentPage={currentPage}
         onPageChange={setCurrentPage}
       />
-      {addVehcile && <AddVehicle onclose = {() => setAddVehicle(false)}/>}
+      {addVehcile && <AddVehicle onclose={() => setAddVehicle(false)} />}
+      {editVehcile && <EditVehicle onclose={() => setEditVehicle(false)} />}
+      {deleteModal && (
+        <DeleteModal onclose={() => setDeleteModal(false)} title="Vehicle" />
+      )}
     </>
   );
 };

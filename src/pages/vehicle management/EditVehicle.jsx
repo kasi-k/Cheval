@@ -1,7 +1,7 @@
 import React from "react";
 import { IoClose } from "react-icons/io5";
 
-const AddVehicle = ({ onclose }) => {
+const EditVehicle = ({ onclose }) => {
   return (
     <div className=" font-roboto-flex fixed inset-0  flex justify-center  items-center  backdrop-blur-xs ">
       <div className=" mx-2 shadow-lg dark:bg-popup-gray bg-white dark:text-white  rounded-lg">
@@ -12,7 +12,7 @@ const AddVehicle = ({ onclose }) => {
           >
             <IoClose className="size-[24px]" />
           </button>
-          <h1 className="text-center  font-bold text-xl">Add Vehicle</h1>{" "}
+          <h1 className="text-center  font-bold text-xl">Edit Vehicle</h1>{" "}
           <form className=" my-5">
             <div className=" grid lg:grid-cols-12 md:grid-cols-12  items-center gap-5 mb-6 mx-5">
               <label className="col-span-5 text-sm font-semibold">
@@ -98,4 +98,4 @@ const AddVehicle = ({ onclose }) => {
   );
 };
 
-export default AddVehicle;
+export default EditVehicle;

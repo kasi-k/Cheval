@@ -15,6 +15,7 @@ import Settings from "./pages/settings/Settings";
 import AcceptedEnquiry from "./pages/booking enquiry/AcceptedEnquiry";
 import NewEnquiry from "./pages/booking enquiry/NewEnquiry";
 import RejectedOrExpired from "./pages/booking enquiry/RejectedOrExpired";
+import ViewVehicle from "./pages/vehicle management/ViewVehicle";
 
 
 const App = () => {
@@ -32,7 +33,10 @@ const App = () => {
             </Route>
             <Route path="/bookings" element={<Booking/>} />
             <Route path="/daily_availability" element={<DailyAvailability/>} />
-            <Route path="/vehicle_management" element={<VehicleManagement/>} />
+            <Route path="/vehicle_management" >
+            <Route index  element={<VehicleManagement/>}/>
+            <Route path="view_vehicle" element = {<ViewVehicle/>}/>
+            </Route>
             <Route path="/driver_management" element={<DriverManagement/>} />
             <Route path="/invoice_payments" element={<InvoicePayments/>} />
             <Route path="/reports_analytics" element={<ReportAnalytics/>} />
