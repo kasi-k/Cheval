@@ -8,11 +8,13 @@ import { BiFilterAlt } from "react-icons/bi";
 import NavBar from "../../components/NavBar";
 import { useSearch } from "../../components/SearchBar";
 import { VehicleData } from "../../components/Data";
+import AddVehicle from "./AddVehicle";
 
 const VehicleManagement = () => {
   const { searchTerm } = useSearch(); // Get search term from context
   const [currentPage, setCurrentPage] = useState(1);
   const [filteredData, setFilteredData] = useState([]);
+  const [addVehcile, setAddVehicle] = useState(false)
 
   const itemsPerPage = 10;
 
@@ -48,12 +50,15 @@ const VehicleManagement = () => {
     startIndex,
     startIndex + itemsPerPage
   );
+ const handleAddVehicle = () =>{
+    setAddVehicle(true)
+ }
 
   return (
     <>
       <NavBar title="Vehicle Management" pagetitle="Vehicle Table" />
       <div className="font-roboto-flex dark:text-white flex justify-end items-center mx-2 mb-2 gap-2">
-        <p className="dark:bg-sidebar bg-white flex items-center px-4 py-2 gap-1.5 rounded-sm text-sm font-semibold  w-48 justify-center text-black">
+        <p  onClick = {handleAddVehicle}className="dark:bg-sidebar bg-white flex items-center px-4 py-2 gap-1.5 rounded-sm text-sm font-semibold  w-48 justify-center text-black">
           + Add Vehicle
         </p>
         <p className="dark:bg-darkgray bg-white flex items-center px-4 py-2 gap-1.5 rounded-sm text-xs font-medium">
@@ -129,6 +134,7 @@ const VehicleManagement = () => {
         currentPage={currentPage}
         onPageChange={setCurrentPage}
       />
+      {addVehcile && <AddVehicle onclose = {() => setAddVehicle(false)}/>}
     </>
   );
 };

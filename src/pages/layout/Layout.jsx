@@ -59,7 +59,7 @@ const Layout = () => {
   ].filter(Boolean);
 
   return (
-    <div className=" font-roboto-flex flex dark:bg-[#282828] bg-blue-400 lg:py-6 lg:pl-6 md:py-6 md:pl-6  w-full h-screen">
+    <div className=" font-roboto-flex flex dark:bg-popup-gray bg-blue-400 lg:py-6 lg:pl-6 md:py-6 md:pl-6  w-full h-screen">
       {/* Sidebar */}
       <div className=" dark:bg-black dark:text-white bg-white text-black rounded-xl h-full text-nowrap w-72 lg:block md:block hidden">
         <div className="flex justify-center my-2">
@@ -86,7 +86,7 @@ const Layout = () => {
                         className={`p-2 rounded-md transition-all duration-300 size-8  ${
                           location.pathname.startsWith(menu.to)
                             ? "bg-sidebar-icon dark:text-white text-white"
-                            : "bg-[#282828] text-white"
+                            : "bg-popup-gray text-white"
                         }`}
                       >
                         {menu.icon}{" "}

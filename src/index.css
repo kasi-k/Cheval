@@ -8,6 +8,7 @@
   --color-sidebar-icon: #005D67 ;
   --color-sidebar : #00ADBF;
   --color-darkgray : #1D1D1D ;
+  --color-popup-gray :#282828 ;
 }
 @layer utilities {
   .no-scrollbar::-webkit-scrollbar {

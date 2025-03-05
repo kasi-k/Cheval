@@ -43,7 +43,7 @@ const Headers = ({ Menus }) => {
                       className={`p-2 rounded-md transition-all duration-300 size-8  ${
                         location.pathname.startsWith(menu.to)
                           ? "bg-sidebar-icon  text-white"
-                          : "bg-[#282828] text-white"
+                          : "bg-popup-gray text-white"
                       }`}
                     >
                       {menu.icon}{" "}

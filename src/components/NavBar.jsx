@@ -17,7 +17,7 @@ const NavBar = ({pagetitle, title}) => {
       </div>
 
       <div className=" flex justify-center lg:p-2 md:p-2 p-1.5 lg:gap-2 md:gap-2 gap-1.5 dark:bg-black bg-white items-center text-center rounded-full ">
-        <p className="lg:mx-1 md:mx-1 mx-0 flex  lg:gap-2 md:gap-2 gap-1.5 dark:bg-[#282828] bg-white dark:text-amber-50 text-black rounded-full items-center lg:p-2 md:p-2 p-1.5 dark:border-0 border">
+        <p className="lg:mx-1 md:mx-1 mx-0 flex  lg:gap-2 md:gap-2 gap-1.5 dark:bg-popup-gray bg-white dark:text-amber-50 text-black rounded-full items-center lg:p-2 md:p-2 p-1.5 dark:border-0 border">
           <Search className="size-5" />
           <input
             type="text"
@@ -27,12 +27,12 @@ const NavBar = ({pagetitle, title}) => {
             onChange={(e) => setSearchTerm(e.target.value)} // Update search term
           />
         </p>
-        <p className="text-amber-50 bg-[#282828] lg:p-2 md:p-2 p-1.5  rounded-full">
+        <p className="text-amber-50 bg-popup-gray lg:p-2 md:p-2 p-1.5  rounded-full">
           <Bell className="size-5" />
         </p>
         <p className="dark:text-amber-50 font-roboto-flex text-xs text-nowrap">
           Profile name  Profile name
-          <span className="text-amber-50 bg-[#282828] lg:p-2 md:p-2 p-1.5  mx-1.5 rounded-full">
+          <span className="text-amber-50 bg-popup-gray lg:p-2 md:p-2 p-1.5  mx-1.5 rounded-full">
             KA
           </span>
         </p>
