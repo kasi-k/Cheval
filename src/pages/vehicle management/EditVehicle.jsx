@@ -4,17 +4,17 @@ import { IoClose } from "react-icons/io5";
 const EditVehicle = ({ onclose }) => {
   return (
     <div className=" font-roboto-flex fixed inset-0  flex justify-center  items-center  backdrop-blur-xs ">
-      <div className=" mx-2 shadow-lg dark:bg-popup-gray bg-white dark:text-white  rounded-lg">
+      <div className=" mx-2 shadow-lg dark:bg-popup-gray bg-white dark:text-white  rounded-lg ">
         <div className="grid  ">
           <button
             onClick={onclose}
-            className=" place-self-end dark:bg-popup-gray bg-white  rounded-full lg:-mx-4 lg:-my-5 md:-my-5 md:-mx-4 my-1 mx-1 lg:shadow-md md:shadow-md shadow-none lg:py-3 md:py-3 py-0 lg:px-3 md:px-3 px-0 "
+            className=" place-self-end dark:bg-popup-gray bg-white  rounded-full lg:-mx-4 md:-mx-4 -mx-2 lg:-my-5 md:-my-5  -my-3  lg:shadow-md md:shadow-md shadow-none lg:py-3 md:py-3 py-0 lg:px-3 md:px-3 px-0 "
           >
             <IoClose className="size-[24px]" />
           </button>
-          <h1 className="text-center  font-bold text-xl">Edit Vehicle</h1>{" "}
+          <h1 className="text-center  font-bold text-xl py-2">Edit Vehicle</h1>{" "}
           <form className=" my-5">
-            <div className=" grid lg:grid-cols-12 md:grid-cols-12  items-center gap-5 mb-6 mx-5">
+            <div className=" grid lg:grid-cols-12 md:grid-cols-12  items-center lg:gap-5 md:gap-5 gap-3 mb-6 mx-5">
               <label className="col-span-5 text-sm font-semibold">
                 Vehicle Type
               </label>

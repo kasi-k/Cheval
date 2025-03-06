@@ -151,21 +151,21 @@ const BookingEnquiry = () => {
       {isBidModalOpen && (
         <div>
           <div className=" font-roboto-flex fixed inset-0 flex justify-center  items-center backdrop-blur-sm ">
-            <div className=" dark:bg-popup-gray bg-black text-white w-[420px] ">
+            <div className=" bg-popup-gray text-white lg:w-[420px] md:w-[420px] w-[360px] ">
               <button
                 onClick={() => setIsBidModalOpen(false)}
-                className="grid place-self-end -mx-4 -my-4 bg-popup-gray py-2 px-2 rounded-full"
+                className="grid place-self-end -mx-4 -my-4 dark:bg-popup-gray bg-white dark:text-white text-black py-2 px-2 rounded-full"
               >
                 <IoClose className="size-[24px]" />
               </button>
               <div className="grid justify-center px-6 py-6 gap-6 ">
                 <p className="text-center font-semibold text-2xl">Bid Now</p>
-                <form className="grid grid-cols-12 items-center font-normal text-sm gap-4">
-                  <label className="col-span-4">Bidding Amount</label>
+                <form className="grid grid-cols-12 items-center font-normal text-base gap-4">
+                  <label className="col-span-5 font-semibold text-nowrap">Bidding Amount</label>
                   <input
                     type="text"
                     placeholder="Enter Bidding Amount"
-                    className="col-span-8 border-gray-400 border rounded-md px-6 py-2 placeholder:text-xs"
+                    className="col-span-7 border-gray-400 border rounded-md px-6 py-2 placeholder:text-xs"
                     value={bidAmount}
                     onChange={(e) => {
                       setBidAmount(e.target.value);
@@ -176,7 +176,7 @@ const BookingEnquiry = () => {
                   />
 
                   {error && (
-                    <p className="col-span-12 text-red-500 text-sm my-2">
+                    <p className="col-span-12 text-red-500 text-base font-normal my-2.5">
                       <span  className="flex items-center gap-2">
                       <BiSolidError /> ( Vehicle Details will visible once bit confirmed )
                       </span>
@@ -193,7 +193,7 @@ const BookingEnquiry = () => {
                 </button>
                 <button
                   onClick={handleSubmitBid}
-                  className=" cursor-pointer dark:bg-sidebar dark:text-black px-6 py-1.5 rounded-sm "
+                  className=" cursor-pointer bg-sidebar text-black px-6 py-1.5 rounded-sm "
                 >
                   Submit
                 </button>

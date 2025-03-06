@@ -17,32 +17,27 @@ import NewEnquiry from "./pages/booking enquiry/NewEnquiry";
 import RejectedOrExpired from "./pages/booking enquiry/RejectedOrExpired";
 import ViewVehicle from "./pages/vehicle management/ViewVehicle";
 
-
 const App = () => {
   return (
     <>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route path="/dashboard" element={<Dashboard/>} />
-            <Route path="/booking_enquiries" >
-            <Route  index element={<BookingEnquiry/>}/>
-            <Route path="view_accepted" element = {<AcceptedEnquiry/>}/>
-            <Route path="view_new" element = {<NewEnquiry/>}/>
-            <Route path="view_expired-rejected" element = {<RejectedOrExpired/>}/>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/booking_enquiries" element={<BookingEnquiry />} />
+
+            <Route path="/bookings" element={<Booking />} />
+            <Route path="/daily_availability" element={<DailyAvailability />} />
+            <Route path="/vehicle_management">
+              <Route index element={<VehicleManagement />} />
+              <Route path="view_vehicle" element={<ViewVehicle />} />
             </Route>
-            <Route path="/bookings" element={<Booking/>} />
-            <Route path="/daily_availability" element={<DailyAvailability/>} />
-            <Route path="/vehicle_management" >
-            <Route index  element={<VehicleManagement/>}/>
-            <Route path="view_vehicle" element = {<ViewVehicle/>}/>
-            </Route>
-            <Route path="/driver_management" element={<DriverManagement/>} />
-            <Route path="/invoice_payments" element={<InvoicePayments/>} />
-            <Route path="/reports_analytics" element={<ReportAnalytics/>} />
-            <Route path="/help_support" element={<HelpSupport/>} />
-            <Route path="/subscription" element={<Subscription/>} />
-            <Route path="/settings" element={<Settings/>} />
+            <Route path="/driver_management" element={<DriverManagement />} />
+            <Route path="/invoice_payments" element={<InvoicePayments />} />
+            <Route path="/reports_analytics" element={<ReportAnalytics />} />
+            <Route path="/help_support" element={<HelpSupport />} />
+            <Route path="/subscription" element={<Subscription />} />
+            <Route path="/settings" element={<Settings />} />
           </Route>
         </Routes>
       </BrowserRouter>
