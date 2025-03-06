@@ -1,19 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { HiArrowsUpDown } from "react-icons/hi2";
-import { RiDeleteBinLine } from "react-icons/ri";
-import { MdOutlineRemoveRedEye } from "react-icons/md";
+import { IoClose } from "react-icons/io5";
 import Pagination from "../../components/Pagination";
 import { BiFilterAlt } from "react-icons/bi";
 import NavBar from "../../components/NavBar";
 import { useSearch } from "../../components/SearchBar";
 import { useNavigate } from "react-router-dom";
 import { EnquiryData } from "../../components/Data";
+import { BiSolidError } from "react-icons/bi";
 
 const BookingEnquiry = () => {
   const { searchTerm } = useSearch(); // Get search term from context
   const [currentPage, setCurrentPage] = useState(1);
   const [filteredData, setFilteredData] = useState([]);
-  const navigate = useNavigate();
+  const [bidded, setBidded] = useState(false);
+  const [isBidModalOpen, setIsBidModalOpen] = useState(false);
+  const [bidAmount, setBidAmount] = useState("");
+  const [error, setError] = useState(false);
 
   const itemsPerPage = 10;
 
@@ -50,6 +53,20 @@ const BookingEnquiry = () => {
     startIndex + itemsPerPage
   );
 
+  const handleBidClick = () => {
+    setIsBidModalOpen(true);
+  };
+
+  const handleSubmitBid = () => {
+    if (!bidAmount.trim()) {
+      setError(true);
+      return;
+    }
+    setBidded(true);
+    setIsBidModalOpen(false);
+    setError(false);
+  };
+
   return (
     <>
       <NavBar title="Booking Enquiries" pagetitle="Booking list" />
@@ -68,8 +85,8 @@ const BookingEnquiry = () => {
                   "S.no",
                   "Enquiry No",
                   "Enquiry Date",
-                  "Booking Company",
-                  "Status",
+                  "Goods Type",
+                  "Weight",
                   "From",
                   "To",
                   "Vehicle Type",
@@ -93,44 +110,24 @@ const BookingEnquiry = () => {
                     <td className="">{data.sno}</td>
                     <td>{data.enquiryno}</td>
                     <td>{data.enquirydate}</td>
-                    <td>{data.bookingcompany}</td>
-                    <td
-                      className={`first-letter:uppercase
-                                  
-                           ${
-                             {
-                               accepted: "text-green-600",
-                               rejected: "text-red-600",
-                               expired: "text-yellow-600 ",
-                               new: "text-sky-500 ",
-                               bided: "text-blue-800 ",
-                             }[data.status]
-                           }`}
-                    >
-                      {data.status}
-                    </td>
+                    <td>{data.goodstype}</td>
+                    <td>{data.weight}</td>
                     <td>{data.from}</td>
                     <td>{data.to}</td>
                     <td className="">{data.vehicletype}</td>
-                    <td className="flex items-center justify-center py-2.5">
-                      <p
-                        onClick={() =>
-                          navigate(
-                            data.status === "accepted"
-                              ? "view_accepted"
-                              : data.status === "new"
-                              ? "view_new"
-                              : "view_expired-rejected"
-                          )
-                        }
-                        className=" cursor-pointer p-1.5  bg-green-200 text-green-600 rounded-sm"
-                      >
-                        <MdOutlineRemoveRedEye />
-                      </p>
-                      <p className="mx-2 p-1.5  bg-pink-200 text-red-500 rounded-sm">
-                        {" "}
-                        <RiDeleteBinLine />
-                      </p>
+                    <td className="flex items-center justify-center py-2 text-xs">
+                      {!bidded ? (
+                        <p
+                          onClick={handleBidClick}
+                          className="cursor-pointer px-2 py-1.5 bg-green-200 text-sky-400 rounded-sm"
+                        >
+                          Bid Now
+                        </p>
+                      ) : (
+                        <p className="cursor-pointer px-2 py-1.5 bg-green-300 text-green-800 rounded-sm">
+                          Bidded
+                        </p>
+                      )}
                     </td>
                   </tr>
                 ))
@@ -151,6 +148,60 @@ const BookingEnquiry = () => {
         currentPage={currentPage}
         onPageChange={setCurrentPage}
       />
+      {isBidModalOpen && (
+        <div>
+          <div className=" font-roboto-flex fixed inset-0 flex justify-center  items-center backdrop-blur-sm ">
+            <div className=" dark:bg-popup-gray bg-black text-white w-[420px] ">
+              <button
+                onClick={() => setIsBidModalOpen(false)}
+                className="grid place-self-end -mx-4 -my-4 bg-popup-gray py-2 px-2 rounded-full"
+              >
+                <IoClose className="size-[24px]" />
+              </button>
+              <div className="grid justify-center px-6 py-6 gap-6 ">
+                <p className="text-center font-semibold text-2xl">Bid Now</p>
+                <form className="grid grid-cols-12 items-center font-normal text-sm gap-4">
+                  <label className="col-span-4">Bidding Amount</label>
+                  <input
+                    type="text"
+                    placeholder="Enter Bidding Amount"
+                    className="col-span-8 border-gray-400 border rounded-md px-6 py-2 placeholder:text-xs"
+                    value={bidAmount}
+                    onChange={(e) => {
+                      setBidAmount(e.target.value);
+                      if (e.target.value.trim()) {
+                        setError(false);
+                      }
+                    }}
+                  />
+
+                  {error && (
+                    <p className="col-span-12 text-red-500 text-sm my-2">
+                      <span  className="flex items-center gap-2">
+                      <BiSolidError /> ( Vehicle Details will visible once bit confirmed )
+                      </span>
+                    </p>
+                  )}
+                </form>
+              </div>
+              <div className="flex justify-end items-center gap-4 mb-4 mx-6 text-sm font-normal">
+                <button
+                  className=" cursor-pointer text-sidebar  border border-sidebar px-6 py-1.5 rounded-sm"
+                  onClick={() => setIsBidModalOpen(false)}
+                >
+                  Discard
+                </button>
+                <button
+                  onClick={handleSubmitBid}
+                  className=" cursor-pointer dark:bg-sidebar dark:text-black px-6 py-1.5 rounded-sm "
+                >
+                  Submit
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };
