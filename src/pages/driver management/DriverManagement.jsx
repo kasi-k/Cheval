@@ -7,14 +7,20 @@ import Pagination from "../../components/Pagination";
 import { BiFilterAlt } from "react-icons/bi";
 import NavBar from "../../components/NavBar";
 import { useSearch } from "../../components/SearchBar";
-import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
-import StarProgress from "../../components/StarProgress";
 import { DriverData } from "../../components/Data";
+import { useNavigate } from "react-router-dom";
+import AddDriver from "./AddDriver";
+import EditDriver from "./EditDriver";
+import DeleteModal from "../../components/DeleteModal";
 
 const DriverManagement = () => {
   const { searchTerm } = useSearch(); // Get search term from context
   const [currentPage, setCurrentPage] = useState(1);
   const [filteredData, setFilteredData] = useState([]);
+  const [addDriver, setAddDriver] = useState(false);
+  const [editDriver, setEditDriver] = useState(false);
+  const [deleteModal, setDeleteModal] = useState(false);
+  const navigate = useNavigate();
 
   const itemsPerPage = 10;
 
@@ -50,16 +56,33 @@ const DriverManagement = () => {
     startIndex,
     startIndex + itemsPerPage
   );
+  const handleAddDriver = () => {
+    setAddDriver(true);
+  };
+  const handleEditDriver = () => {
+    setEditDriver(true);
+  };
+
+  const handleViewDriver = () => {
+    navigate("view_driver");
+  };
+
+  const handleDelete = () => {
+    setDeleteModal(true);
+  };
 
   return (
     <>
       <NavBar title="Driver Management" pagetitle="Driver Table" />
       <div className="font-roboto-flex dark:text-white flex justify-end items-center mx-2 mb-2 gap-2">
-        <p className="dark:bg-darkgray bg-white flex items-center px-4 py-2 gap-1.5 rounded-sm text-xs font-medium">
+        <p className="cursor-default dark:bg-darkgray bg-white flex items-center px-4 py-2 gap-1.5 rounded-sm text-xs font-medium">
           Filter
           <BiFilterAlt />
         </p>
-        <p className="dark:bg-sidebar bg-white flex items-center px-4 py-2 gap-1.5 rounded-sm text-sm font-semibold  w-48 justify-center text-black">
+        <p
+          onClick={handleAddDriver}
+          className="cursor-pointer dark:bg-sidebar bg-white flex items-center px-4 py-2 gap-1.5 rounded-sm text-sm font-semibold  w-48 justify-center text-black"
+        >
           + Add Driver
         </p>
       </div>
@@ -101,13 +124,22 @@ const DriverManagement = () => {
                     <td>{data.experience}</td>
                     <td>{data.ratings}</td>
                     <td className="flex items-center justify-center py-2.5">
-                      <p className="p-1.5 bg-blue-300 text-blue-500 rounded-sm mx-2">
+                      <p
+                        onClick={handleEditDriver}
+                        className=" cursor-pointer p-1.5 bg-blue-300 text-blue-500 rounded-sm mx-2"
+                      >
                         <FiEdit2 />
                       </p>
-                      <p className=" cursor-pointer p-1.5  bg-green-200 text-green-600 rounded-sm">
+                      <p
+                        onClick={handleViewDriver}
+                        className=" cursor-pointer p-1.5  bg-green-200 text-green-600 rounded-sm"
+                      >
                         <MdOutlineRemoveRedEye />
                       </p>
-                      <p className="mx-2 p-1.5  bg-pink-200 text-red-500 rounded-sm">
+                      <p
+                        onClick={handleDelete}
+                        className=" cursor-pointer mx-2 p-1.5  bg-pink-200 text-red-500 rounded-sm"
+                      >
                         {" "}
                         <RiDeleteBinLine />
                       </p>
@@ -131,6 +163,9 @@ const DriverManagement = () => {
         currentPage={currentPage}
         onPageChange={setCurrentPage}
       />
+      {addDriver && <AddDriver onclose={() => setAddDriver(false)} />}
+      {editDriver && <EditDriver onclose={() => setEditDriver(false)} />}
+      {deleteModal && <DeleteModal onclose={() => setDeleteModal(false)} title = "Driver" />}
     </>
   );
 };

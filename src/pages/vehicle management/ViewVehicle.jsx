@@ -6,7 +6,7 @@ const ViewVehicle = () => {
     <>
       <NavBar title="Vehicle Management" pagetitle="Vehicle Details" />
       <div className="font-roboto-flex mx-2 grid lg:grid-cols-12 md:grid-cols-9 grid-cols-3 gap-4 dark:text-white my-6">
-        <div className="col-span-3 p-6 space-y-4 dark:dark:bg-darkgray bg-white  h-36  rounded-2xl">
+        <div className="col-span-3 p-6 space-y-4 dark:bg-darkgray bg-white  h-36  rounded-2xl">
           <p className="font-bold text-base">Vehicle Type</p>
           <p className="font-light text-xs">Truck</p>
         </div>

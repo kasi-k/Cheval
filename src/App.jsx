@@ -16,6 +16,7 @@ import AcceptedEnquiry from "./pages/booking enquiry/AcceptedEnquiry";
 import NewEnquiry from "./pages/booking enquiry/NewEnquiry";
 import RejectedOrExpired from "./pages/booking enquiry/RejectedOrExpired";
 import ViewVehicle from "./pages/vehicle management/ViewVehicle";
+import ViewDriver from "./pages/driver management/ViewDriver";
 
 const App = () => {
   return (
@@ -32,7 +33,10 @@ const App = () => {
               <Route index element={<VehicleManagement />} />
               <Route path="view_vehicle" element={<ViewVehicle />} />
             </Route>
-            <Route path="/driver_management" element={<DriverManagement />} />
+            <Route path="/driver_management">
+              <Route index element={<DriverManagement />} />
+              <Route path="view_driver" element={<ViewDriver />} />
+            </Route>
             <Route path="/invoice_payments" element={<InvoicePayments />} />
             <Route path="/reports_analytics" element={<ReportAnalytics />} />
             <Route path="/help_support" element={<HelpSupport />} />
