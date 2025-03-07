@@ -6,14 +6,14 @@ const ViewDriver = () => {
   return (
     <>
       <NavBar title="Driver Management" pagetitle="Driver Details" />
-      <div className="font-roboto-flex mx-2 grid lg:grid-cols-12 md:grid-cols-9 grid-cols-3 gap-4 dark:text-white my-6">
+      <div className="font-roboto-flex mx-2 grid lg:grid-cols-12 md:grid-cols-8  gap-4 dark:text-white my-6">
         <div className="col-span-4 p-6 space-y-4 dark:bg-darkgray bg-white   rounded-2xl">
           <p className="font-bold text-base">Driver Details</p>
           <div className="grid grid-cols-4 gap-4 font-light text-xs">
-            <p className="col-span-2">Driver Name</p>
-            <p className="col-span-2">Name</p>
-            <p className="col-span-2">Phone Number</p>
-            <p className="col-span-2">000000000</p>
+            <p className="col-span-3">Driver Name</p>
+            <p className="col-span-1">Name</p>
+            <p className="col-span-3">Phone Number</p>
+            <p className="col-span-1">000000000</p>
           </div>
         </div>
         <div className="col-span-4 p-6 space-y-4 dark:bg-darkgray bg-white    rounded-2xl ">
@@ -23,18 +23,18 @@ const ViewDriver = () => {
         </div>
         <div className="col-span-4 p-6 space-y-4 dark:bg-darkgray bg-white  row-span-2  rounded-2xl">
           <p className="font-bold text-base">Address</p>
-          <div className="grid grid-cols-8 gap-2 font-light text-xs">
-            <p className="col-span-6">Street</p>
+          <div className="grid grid-cols-3 gap-2 font-light text-xs">
+            <p className="col-span-2">Street</p>
             <p className="col-span-1">Name</p>
-            <p className="col-span-6">landmark</p>
+            <p className="col-span-2">landmark</p>
             <p className="col-span-1">#23456</p>
-            <p className="col-span-6">City</p>
+            <p className="col-span-2">City</p>
             <p className="col-span-1">Chennai</p>
-            <p className="col-span-6">State</p>
+            <p className="col-span-2">State</p>
             <p className="col-span-1">Tamilnadu</p>
-            <p className="col-span-6">Country</p>
+            <p className="col-span-2">Country</p>
             <p className="col-span-1">India</p>
-            <p className="col-span-6">Pincode</p>
+            <p className="col-span-2">Pincode</p>
             <p className="col-span-1">600096</p>
           </div>
         </div>
@@ -55,20 +55,26 @@ const ViewDriver = () => {
           </div>
         </div>
         <div className="col-span-4 p-6 space-y-4 dark:bg-darkgray bg-white    rounded-2xl">
-          {" "}
-          <p className="font-bold text-base">RC Number</p>
-          <p className="font-light text-xs">4326781</p>
-          <p className="font-light text-xs"> RC Photo Copy</p>
+          <p className="font-bold text-base">Trip Details</p>
+          <div className="grid grid-cols-4 gap-4 font-light text-xs">
+            <p className="col-span-3">Total Trips Completed</p>
+            <p className="col-span-1">Name</p>
+            <p className="col-span-3">Distance Covered</p>
+            <p className="col-span-1">Distance</p>
+          </div>
+        </div>
+        <div className="col-span-4 p-6 space-y-4 dark:bg-darkgray bg-white    rounded-2xl">
+          <p className="font-bold text-base">Earnings(Per Tip & Total)</p>
+          <div className="grid grid-cols-4 gap-4 font-light text-xs">
+            <p className="col-span-3">Per Trip</p>
+            <p className="col-span-1">₹455 per Km</p>
+            <p className="col-span-3">Totally Earned</p>
+            <p className="col-span-1">₹45500</p>
+          </div>
         </div>
         <div className="col-span-4 p-6 space-y-4 dark:bg-darkgray bg-white    rounded-2xl">
           {" "}
-          <p className="font-bold text-base">Insurance</p>
-          <p className="font-light text-xs">7895qwetr</p>
-          <p className="font-light text-xs">Insurance Photo Copy</p>
-        </div>
-        <div className="col-span-4 p-6 space-y-4 dark:bg-darkgray bg-white    rounded-2xl">
-          {" "}
-          <p className="font-bold text-base">Permit</p>
+          <p className="font-bold text-base">One Time Trips</p>
           <p className="font-light text-xs">Number</p>
         </div>
       </div>

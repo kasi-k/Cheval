@@ -17,6 +17,7 @@ import NewEnquiry from "./pages/booking enquiry/NewEnquiry";
 import RejectedOrExpired from "./pages/booking enquiry/RejectedOrExpired";
 import ViewVehicle from "./pages/vehicle management/ViewVehicle";
 import ViewDriver from "./pages/driver management/ViewDriver";
+import ViewRevenue from "./pages/report & analytics/ViewRevenue";
 
 const App = () => {
   return (
@@ -38,7 +39,11 @@ const App = () => {
               <Route path="view_driver" element={<ViewDriver />} />
             </Route>
             <Route path="/invoice_payments" element={<InvoicePayments />} />
-            <Route path="/reports_analytics" element={<ReportAnalytics />} />
+
+            <Route path="/reports_analytics">
+              <Route index element={<ReportAnalytics />} />
+              <Route path="view_revenue" element={<ViewRevenue />} />
+            </Route>
             <Route path="/help_support" element={<HelpSupport />} />
             <Route path="/subscription" element={<Subscription />} />
             <Route path="/settings" element={<Settings />} />

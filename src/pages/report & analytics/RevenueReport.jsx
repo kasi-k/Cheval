@@ -5,11 +5,17 @@ import { MdOutlineRemoveRedEye } from "react-icons/md";
 import Pagination from "../../components/Pagination";
 import { useSearch } from "../../components/SearchBar";
 import { RevenueData } from "../../components/Data";
+import ViewRevenue from "./ViewRevenue";
+import DeleteModal from "../../components/DeleteModal";
+import { useNavigate } from "react-router-dom";
 
 const RevenueReport = () => {
   const { searchTerm } = useSearch(); // Get search term from context
   const [currentPage, setCurrentPage] = useState(1);
   const [filteredData, setFilteredData] = useState([]);
+  const [deleteModal, setDeleteModal] = useState(false);
+  const [viewRevenueReport, setViewRevenueReport] = useState(false);
+  const navigate = useNavigate();
 
   const itemsPerPage = 10;
 
@@ -46,10 +52,16 @@ const RevenueReport = () => {
     startIndex + itemsPerPage
   );
 
-
+  const handleViewReport = () => {
+    setViewRevenueReport(true);
+  };
+  const handleDelete = () => {
+    setDeleteModal(true);
+  };
 
   return (
     <>
+        {viewRevenueReport ? (<ViewRevenue/>) : (
       <div className="mx-2  h-[514px] dark:bg-darkgray bg-white rounded-lg">
         <div className="overflow-auto no-scrollbar">
           <table className="font-roboto-flex w-full dark:text-white text-gray-800 whitespace-nowrap">
@@ -86,10 +98,16 @@ const RevenueReport = () => {
                     <td>{data.bidaccepted}</td>
                     <td>{data.bidamount}</td>
                     <td className="flex items-center justify-center py-2.5">
-                      <p className=" cursor-pointer p-1.5  bg-green-200 text-green-600 rounded-sm">
+                      <p
+                        onClick={handleViewReport}
+                        className=" cursor-pointer p-1.5  bg-green-200 text-green-600 rounded-sm"
+                      >
                         <MdOutlineRemoveRedEye />
                       </p>
-                      <p className="mx-2 p-1.5  bg-pink-200 text-red-500 rounded-sm">
+                      <p
+                        onClick={handleDelete}
+                        className="mx-2 p-1.5  bg-pink-200 text-red-500 rounded-sm"
+                      >
                         {" "}
                         <RiDeleteBinLine />
                       </p>
@@ -107,12 +125,19 @@ const RevenueReport = () => {
           </table>
         </div>
       </div>
+      )}
       <Pagination
         totalItems={filteredData.length}
         itemsPerPage={itemsPerPage}
         currentPage={currentPage}
         onPageChange={setCurrentPage}
       />
+      {deleteModal && (
+        <DeleteModal
+          onclose={() => setDeleteModal(false)}
+          title="Revenue Report"
+        />
+      )}
     </>
   );
 };
