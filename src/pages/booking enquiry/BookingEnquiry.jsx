@@ -115,11 +115,11 @@ const BookingEnquiry = () => {
                     <td>{data.from}</td>
                     <td>{data.to}</td>
                     <td className="">{data.vehicletype}</td>
-                    <td className="flex items-center justify-center py-2 text-xs">
+                    <td className="flex items-center justify-center py-2 text-sm">
                       {!bidded ? (
                         <p
                           onClick={handleBidClick}
-                          className="cursor-pointer px-2 py-1.5 bg-green-200 text-sky-400 rounded-sm"
+                          className="cursor-pointer px-2 py-1.5 bg-green-100 text-sky-500 rounded-sm"
                         >
                           Bid Now
                         </p>

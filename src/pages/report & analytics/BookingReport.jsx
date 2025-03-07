@@ -5,11 +5,15 @@ import { MdOutlineRemoveRedEye } from "react-icons/md";
 import Pagination from "../../components/Pagination";
 import { useSearch } from "../../components/SearchBar";
 import { BookingReportData } from "../../components/Data";
+import ViewBooking from "./ViewBooking";
+import DeleteModal from "../../components/DeleteModal";
 
 const BookingReport = () => {
   const { searchTerm } = useSearch(); // Get search term from context
   const [currentPage, setCurrentPage] = useState(1);
   const [filteredData, setFilteredData] = useState([]);
+  const [viewBookingReport, setViewBookingReport] = useState(false);
+  const [deleteModal, setDeleteModal] = useState(false);
 
   const itemsPerPage = 10;
 
@@ -45,74 +49,89 @@ const BookingReport = () => {
     startIndex,
     startIndex + itemsPerPage
   );
-
-
+  const handleViewBooking = () => {
+    setViewBookingReport(true);
+  };
+ const handleDelete = () => {
+  setDeleteModal(true)
+ }
 
   return (
     <>
-      <div className="mx-2  h-[514px] dark:bg-darkgray bg-white rounded-lg">
-        <div className="overflow-auto no-scrollbar">
-          <table className="font-roboto-flex w-full dark:text-white text-gray-800 whitespace-nowrap">
-            <thead>
-              <tr className=" font-semibold text-sm border-b-[1px] dark:border-black border-gray-400">
-                {[
-                  "S.no",
-                  "Date",
-                  "Bid Accepted",
-                  "Bid Amount",
-                  "Payment Collected",
-                  "Payment Balance"
-                ].map((heading) => (
-                  <th key={heading} className="p-3.5">
-                    <h1 className="flex items-center justify-center  gap-1">
-                      {heading} <HiArrowsUpDown className="dark:text-white" />
-                    </h1>
-                  </th>
-                ))}
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody className=" dark:bg-darkgray dark:text-white text-gray-600 cursor-default">
-              {paginatedData.length > 0 ? (
-                paginatedData.map((data, index) => (
-                  <tr
-                    className="border-b-[1px] dark:border-black border-gray-400 text-center text-sm  "
-                    key={index}
-                  >
-                    <td className="">{data.sno}</td>
-                    <td>{data.date}</td>
-                    <td>{data.bidaccepted}</td>
-                    <td>{data.bidamount}</td>
-                    <td>{data.paymentcollected}</td>
-                    <td>{data.paymentbalance}</td>
-                    <td className="flex items-center justify-center py-2.5">
-                      <p className=" cursor-pointer p-1.5  bg-green-200 text-green-600 rounded-sm">
-                        <MdOutlineRemoveRedEye />
-                      </p>
-                      <p className="mx-2 p-1.5  bg-pink-200 text-red-500 rounded-sm">
-                        {" "}
-                        <RiDeleteBinLine />
-                      </p>
+    {viewBookingReport ? <ViewBooking/> : (
+      <div>
+        <div className="mx-2  h-[514px] dark:bg-darkgray bg-white rounded-lg">
+          <div className="overflow-auto no-scrollbar">
+            <table className="font-roboto-flex w-full dark:text-white text-gray-800 whitespace-nowrap">
+              <thead>
+                <tr className=" font-semibold text-sm border-b-[1px] dark:border-black border-gray-400">
+                  {[
+                    "S.no",
+                    "Date",
+                    "Bid Accepted",
+                    "Bid Amount",
+                    "Payment Collected",
+                    "Payment Balance",
+                  ].map((heading) => (
+                    <th key={heading} className="p-3.5">
+                      <h1 className="flex items-center justify-center  gap-1">
+                        {heading} <HiArrowsUpDown className="dark:text-white" />
+                      </h1>
+                    </th>
+                  ))}
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody className=" dark:bg-darkgray dark:text-white text-gray-600 cursor-default">
+                {paginatedData.length > 0 ? (
+                  paginatedData.map((data, index) => (
+                    <tr
+                      className="border-b-[1px] dark:border-black border-gray-400 text-center text-sm  "
+                      key={index}
+                    >
+                      <td className="">{data.sno}</td>
+                      <td>{data.date}</td>
+                      <td>{data.bidaccepted}</td>
+                      <td>{data.bidamount}</td>
+                      <td>{data.paymentcollected}</td>
+                      <td>{data.paymentbalance}</td>
+                      <td className="flex items-center justify-center py-2.5">
+                        <p
+                          onClick={handleViewBooking}
+                          className=" cursor-pointer p-1.5  bg-green-200 text-green-600 rounded-sm"
+                        >
+                          <MdOutlineRemoveRedEye />
+                        </p>
+                        <p onClick={handleDelete} className="mx-2 p-1.5  bg-pink-200 text-red-500 rounded-sm">
+                          {" "}
+                          <RiDeleteBinLine />
+                        </p>
+                      </td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td
+                      colSpan="10"
+                      className="text-center py-10 text-gray-500"
+                    >
+                      No matching results found.
                     </td>
                   </tr>
-                ))
-              ) : (
-                <tr>
-                  <td colSpan="10" className="text-center py-10 text-gray-500">
-                    No matching results found.
-                  </td>
-                </tr>
-              )}
-            </tbody>
-          </table>
+                )}
+              </tbody>
+            </table>
+          </div>
         </div>
+        <Pagination
+          totalItems={filteredData.length}
+          itemsPerPage={itemsPerPage}
+          currentPage={currentPage}
+          onPageChange={setCurrentPage}
+        />
       </div>
-      <Pagination
-        totalItems={filteredData.length}
-        itemsPerPage={itemsPerPage}
-        currentPage={currentPage}
-        onPageChange={setCurrentPage}
-      />
+      )}
+      {deleteModal && <DeleteModal onclose={() => setDeleteModal(false)} title = "Booking Report"/>}
     </>
   );
 };

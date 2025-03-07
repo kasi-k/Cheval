@@ -61,7 +61,8 @@ const RevenueReport = () => {
 
   return (
     <>
-        {viewRevenueReport ? (<ViewRevenue/>) : (
+    {viewRevenueReport ? (<ViewRevenue/>) : (
+    <div>
       <div className="mx-2  h-[514px] dark:bg-darkgray bg-white rounded-lg">
         <div className="overflow-auto no-scrollbar">
           <table className="font-roboto-flex w-full dark:text-white text-gray-800 whitespace-nowrap">
@@ -125,13 +126,15 @@ const RevenueReport = () => {
           </table>
         </div>
       </div>
-      )}
+     
       <Pagination
         totalItems={filteredData.length}
         itemsPerPage={itemsPerPage}
         currentPage={currentPage}
         onPageChange={setCurrentPage}
       />
+      </div>
+    )}
       {deleteModal && (
         <DeleteModal
           onclose={() => setDeleteModal(false)}

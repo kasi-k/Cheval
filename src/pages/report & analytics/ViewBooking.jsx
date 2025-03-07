@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { IoMdArrowRoundBack } from "react-icons/io";
-import RevenueReport from "./RevenueReport";
+import BookingReport from "./BookingReport";
 
-const ViewRevenue = () => {
+const ViewBooking = () => {
     const [back, setBack] = useState(false)
 
     const handleBack = () =>{
@@ -10,23 +10,23 @@ const ViewRevenue = () => {
     }
   return (
     <>
-    {back ? <RevenueReport/> :(
+    {back ? <BookingReport/> :(
     <div>
-      <div className="grid lg:grid-cols-12 md:grid-cols-12 gap-4 text-white">
+      <div className="grid lg:grid-cols-12 md:grid-cols-12 gap-4 text-white ">
         <div className="bg-darkgray col-span-6 p-10 rounded-2xl space-y-4">
-          <p className="font-bold text-base">Revenue Report</p>
+          <p className="font-bold text-base">Booking Report</p>
           <div className="grid grid-cols-8 gap-2 font-light text-xs">
-            <p className="col-span-6">No Of Enquiry</p>
-            <p className="col-span-1">Name</p>
-            <p className="col-span-6">Bids Count</p>
-            <p className="col-span-1">Count</p>
-            <p className="col-span-6">Bids Accepted</p>
-            <p className="col-span-1">₹56778</p>
+            <p className="col-span-6">Bid Accepted</p>
+            <p className="col-span-1">₹346</p>
             <p className="col-span-6">Bids Amount</p>
-            <p className="col-span-1">₹2356</p>
+            <p className="col-span-1">₹346</p>
+            <p className="col-span-6">Payment Collected</p>
+            <p className="col-span-1">₹346</p>
+            <p className="col-span-6">Payment Balance</p>
+            <p className="col-span-1">₹346</p>
           </div>
         </div>
-        <div className="bg-darkgray col-span-6 rounded-2xl p-10 space-y-4">
+        <div className="bg-darkgray col-span-6 rounded-2xl p-10  space-y-4">
           <p className="font-bold text-base">Date</p>
           <p className=" font-light text-xs">21.02.2025</p>
         </div>
@@ -42,4 +42,4 @@ const ViewRevenue = () => {
   );
 };
 
-export default ViewRevenue;
+export default ViewBooking;
