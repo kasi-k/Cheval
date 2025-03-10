@@ -7,11 +7,13 @@ import { BiFilterAlt } from "react-icons/bi";
 import NavBar from "../../components/NavBar";
 import { useSearch } from "../../components/SearchBar";
 import { TicketData } from "../../components/Data";
+import { useNavigate } from "react-router-dom";
 
 const HelpSupport = () => {
   const { searchTerm } = useSearch(); // Get search term from context
   const [currentPage, setCurrentPage] = useState(1);
   const [filteredData, setFilteredData] = useState([]);
+  const navigate = useNavigate()
 
   const itemsPerPage = 10;
 
@@ -47,6 +49,10 @@ const HelpSupport = () => {
     startIndex,
     startIndex + itemsPerPage
   );
+
+  const handleViewTicket = () => {
+    navigate("view_support")
+  }
 
   return (
     <>
@@ -126,7 +132,7 @@ const HelpSupport = () => {
                     <td>{data.assignedto}</td>
                     <td className="">{data.lastupdated}</td>
                     <td className="flex items-center justify-center py-2.5">
-                      <p className=" cursor-pointer p-1.5  bg-green-200 text-green-600 rounded-sm">
+                      <p onClick={handleViewTicket} className=" cursor-pointer p-1.5  bg-green-200 text-green-600 rounded-sm">
                         <MdOutlineRemoveRedEye />
                       </p>
                     </td>

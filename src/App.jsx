@@ -18,6 +18,8 @@ import RejectedOrExpired from "./pages/booking enquiry/RejectedOrExpired";
 import ViewVehicle from "./pages/vehicle management/ViewVehicle";
 import ViewDriver from "./pages/driver management/ViewDriver";
 import ViewRevenue from "./pages/report & analytics/ViewRevenue";
+import ViewSupport from "./pages/help & support/ViewSupport";
+import AddRoleAccess from "./pages/settings/AddRoleAcess";
 
 const App = () => {
   return (
@@ -44,9 +46,15 @@ const App = () => {
               <Route index element={<ReportAnalytics />} />
               <Route path="view_revenue" element={<ViewRevenue />} />
             </Route>
-            <Route path="/help_support" element={<HelpSupport />} />
+            <Route path="/help_support">
+            <Route index  element={<HelpSupport />} />
+            <Route path="view_support" element = {<ViewSupport/>}/>
+            </Route>
             <Route path="/subscription" element={<Subscription />} />
-            <Route path="/settings" element={<Settings />} />
+            <Route path="/settings"  >
+            <Route index element={<Settings />}/>
+            <Route path="roleaccess" element= {<AddRoleAccess/>}/>
+            </Route>
           </Route>
         </Routes>
       </BrowserRouter>

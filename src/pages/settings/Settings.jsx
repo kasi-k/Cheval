@@ -7,11 +7,13 @@ import { BiFilterAlt } from "react-icons/bi";
 import NavBar from "../../components/NavBar";
 import { useSearch } from "../../components/SearchBar";
 import { RoleData } from "../../components/Data";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const Settings = () => {
   const { searchTerm } = useSearch(); // Get search term from context
   const [currentPage, setCurrentPage] = useState(1);
   const [filteredData, setFilteredData] = useState([]);
+  const navigate = useNavigate();
 
   const itemsPerPage = 10;
 
@@ -47,13 +49,16 @@ const Settings = () => {
     startIndex,
     startIndex + itemsPerPage
   );
-
+ const handleRoleAccessLevel = () =>{
+  navigate("roleaccess")
+ }
 
 
   return (
     <>
       <NavBar title="Daily Availability" pagetitle="Daily Table" />
-      <div className="font-roboto-flex dark:text-white flex justify-end items-center mx-2 mb-2">
+      <div className="font-roboto-flex dark:text-white flex justify-end items-center mx-2 mb-2 gap-2">
+        <button onClick = {handleRoleAccessLevel} className="bg-sidebar rounded-sm py-1.5 px-4 text-black">Add Role</button>
              <p className="dark:bg-darkgray bg-white flex items-center px-4 py-2 gap-1.5 rounded-sm text-xs font-medium">
                Filter
                <BiFilterAlt />
