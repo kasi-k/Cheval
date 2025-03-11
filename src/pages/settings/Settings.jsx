@@ -56,7 +56,7 @@ const Settings = () => {
 
   return (
     <>
-      <NavBar title="Daily Availability" pagetitle="Daily Table" />
+      <NavBar title="Settings" pagetitle="Access Levels" />
       <div className="font-roboto-flex dark:text-white flex justify-end items-center mx-2 mb-2 gap-2">
         <button onClick = {handleRoleAccessLevel} className="bg-sidebar rounded-sm py-1.5 px-4 text-black">Add Role</button>
              <p className="dark:bg-darkgray bg-white flex items-center px-4 py-2 gap-1.5 rounded-sm text-xs font-medium">
