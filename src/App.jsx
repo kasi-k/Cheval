@@ -20,6 +20,7 @@ import ViewDriver from "./pages/driver management/ViewDriver";
 import ViewRevenue from "./pages/report & analytics/ViewRevenue";
 import ViewSupport from "./pages/help & support/ViewSupport";
 import AddRoleAccess from "./pages/settings/AddRoleAcess";
+import ViewAvailability from "./pages/daily availability/ViewAvailability";
 
 const App = () => {
   return (
@@ -31,7 +32,10 @@ const App = () => {
             <Route path="/booking_enquiries" element={<BookingEnquiry />} />
 
             <Route path="/bookings" element={<Booking />} />
-            <Route path="/daily_availability" element={<DailyAvailability />} />
+            <Route path="/daily_availability" >
+            <Route index element={<DailyAvailability />}/>
+            <Route path="view_dailyavailability" element = {<ViewAvailability/>}/>
+            </Route>
             <Route path="/vehicle_management">
               <Route index element={<VehicleManagement />} />
               <Route path="view_vehicle" element={<ViewVehicle />} />

@@ -8,11 +8,13 @@ import NavBar from "../../components/NavBar";
 import { useSearch } from "../../components/SearchBar";
 import { TicketData } from "../../components/Data";
 import { useNavigate } from "react-router-dom";
+import RaiseTicket from "./RaiseTicket";
 
 const HelpSupport = () => {
   const { searchTerm } = useSearch(); // Get search term from context
   const [currentPage, setCurrentPage] = useState(1);
   const [filteredData, setFilteredData] = useState([]);
+  const [raiseTicket, setRaiseTicket] = useState(false)
   const navigate = useNavigate()
 
   const itemsPerPage = 10;
@@ -54,12 +56,16 @@ const HelpSupport = () => {
     navigate("view_support")
   }
 
+  const handleTRaiseTicket = () => {
+    setRaiseTicket(true)
+  }
+
   return (
     <>
       <NavBar title="Help & Support" pagetitle="Table" />
       <div className="font-roboto-flex dark:text-white flex justify-end items-center mx-2 mb-2">
         <div className="flex gap-2">
-         <button className="bg-sidebar text-black px-3 py-1.5 rounded-sm text-sm">Raise Ticket</button>
+         <button onClick={handleTRaiseTicket} className=" cursor-pointer bg-sidebar text-black px-3 py-1.5 rounded-sm text-sm">Raise Ticket</button>
         <p className="dark:bg-darkgray bg-white flex items-center px-4 py-2 gap-1.5 rounded-sm text-xs font-medium">
           Filter
           <BiFilterAlt />
@@ -155,6 +161,7 @@ const HelpSupport = () => {
         currentPage={currentPage}
         onPageChange={setCurrentPage}
       />
+      {raiseTicket && <RaiseTicket onclose={()=>setRaiseTicket(false)}/>}
     </>
   );
 };

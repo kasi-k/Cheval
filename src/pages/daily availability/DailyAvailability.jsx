@@ -8,11 +8,19 @@ import { BiFilterAlt } from "react-icons/bi";
 import NavBar from "../../components/NavBar";
 import { useSearch } from "../../components/SearchBar";
 import { DailyData } from "../../components/Data";
+import AddAvailability from "./AddAvailability";
+import EditAvailability from "./EditAvailability";
+import DeleteModal from "../../components/DeleteModal";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const DailyAvailability = () => {
   const { searchTerm } = useSearch(); // Get search term from context
   const [currentPage, setCurrentPage] = useState(1);
   const [filteredData, setFilteredData] = useState([]);
+  const [addDailyAvailability, setAddDailyAvailability] = useState(false)
+  const [editDailyAvailability, setEditDailyAvailability] = useState(false)
+  const [deleteAvailability, setDeleteAvailability] = useState(false)
+  const navigate = useNavigate()
 
   const itemsPerPage = 10;
 
@@ -49,11 +57,24 @@ const DailyAvailability = () => {
     startIndex + itemsPerPage
   );
 
+  const handleAddAvailability = () => {
+    setAddDailyAvailability(true)
+  }
+  const handleEditAvailability = () => {
+    setEditDailyAvailability(true)
+  }
+  const handleViewAvailability = () =>{
+    navigate("view_dailyavailability")
+  }
+  const handleDeleteAvailability = () => {
+    setDeleteAvailability(true)
+  }
+
   return (
     <>
       <NavBar title="Daily Availability" pagetitle="Daily Table" />
       <div className="font-roboto-flex dark:text-white flex justify-end items-center mx-2 mb-2">
-        <p className="dark:bg-sidebar bg-white flex items-center px-4 py-2 gap-1.5 rounded-sm text-sm font-semibold w-48 justify-center text-black">
+        <p onClick={handleAddAvailability} className=" cursor-pointer dark:bg-sidebar bg-white flex items-center px-4 py-2 gap-1.5 rounded-sm text-sm font-semibold w-48 justify-center text-black">
           + Add
         </p>
       </div>
@@ -93,13 +114,13 @@ const DailyAvailability = () => {
                     <td>{data.preferredstate}</td>
                     <td>{data.preferreddistrict}</td>
                     <td className="flex items-center justify-center py-2.5">
-                      <p className="p-1.5 bg-blue-300 text-blue-500 rounded-sm mx-2">
+                      <p onClick={handleEditAvailability} className="cursor-pointer p-1.5 bg-blue-300 text-blue-500 rounded-sm mx-2">
                         <FiEdit2 />
                       </p>
-                      <p className=" cursor-pointer p-1.5  bg-green-200 text-green-600 rounded-sm">
+                      <p onClick = {handleViewAvailability} className=" cursor-pointer p-1.5  bg-green-200 text-green-600 rounded-sm">
                         <MdOutlineRemoveRedEye />
                       </p>
-                      <p className="mx-2 p-1.5  bg-pink-200 text-red-500 rounded-sm">
+                      <p onClick={handleDeleteAvailability} className="cursor-pointer mx-2 p-1.5  bg-pink-200 text-red-500 rounded-sm">
                         {" "}
                         <RiDeleteBinLine />
                       </p>
@@ -123,6 +144,9 @@ const DailyAvailability = () => {
         currentPage={currentPage}
         onPageChange={setCurrentPage}
       />
+      {addDailyAvailability && <AddAvailability onclose={() => setAddDailyAvailability(false)}/>}
+      {editDailyAvailability && <EditAvailability onclose={() => setEditDailyAvailability(false)}/>}
+        {deleteAvailability && <DeleteModal onclose={() => setDeleteAvailability(false)} title="Daily Availability"/>}
     </>
   );
 };

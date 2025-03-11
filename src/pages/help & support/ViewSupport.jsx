@@ -6,7 +6,7 @@ const ViewSupport = () => {
   return (
     <>
         <NavBar title="Help & Support" pagetitle="View Ticket" />
-      <div className="grid lg:grid-cols-12 md:grid-cols-12 gap-4 text-white ">
+      <div className="grid lg:grid-cols-12 md:grid-cols-8 gap-4 text-white ">
         <div className="bg-darkgray col-span-4 p-10 rounded-2xl space-y-4">
           <p className="font-bold text-base">Ticket Details</p>
           <div className="grid grid-cols-8 gap-2 font-light text-xs">
