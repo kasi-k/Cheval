@@ -21,6 +21,7 @@ import ViewRevenue from "./pages/report & analytics/ViewRevenue";
 import ViewSupport from "./pages/help & support/ViewSupport";
 import AddRoleAccess from "./pages/settings/AddRoleAcess";
 import ViewAvailability from "./pages/daily availability/ViewAvailability";
+import ViewInvoice from "./pages/invoice & payments/ViewInvoice";
 
 const App = () => {
   return (
@@ -44,7 +45,10 @@ const App = () => {
               <Route index element={<DriverManagement />} />
               <Route path="view_driver" element={<ViewDriver />} />
             </Route>
-            <Route path="/invoice_payments" element={<InvoicePayments />} />
+            <Route path="/invoice_payments">
+            <Route index element = {<InvoicePayments />}/>
+            <Route path="view_invoice" element = {<ViewInvoice/>}/>
+            </Route>
 
             <Route path="/reports_analytics">
               <Route index element={<ReportAnalytics />} />

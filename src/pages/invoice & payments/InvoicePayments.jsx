@@ -7,11 +7,15 @@ import { BiFilterAlt } from "react-icons/bi";
 import NavBar from "../../components/NavBar";
 import { useSearch } from "../../components/SearchBar";
 import { InvoiceData } from "../../components/Data";
+import { useNavigate } from "react-router-dom";
+import DeleteModal from "../../components/DeleteModal";
 
 const InvoicePayments = () => {
   const { searchTerm } = useSearch(); // Get search term from context
   const [currentPage, setCurrentPage] = useState(1);
   const [filteredData, setFilteredData] = useState([]);
+  const navigate = useNavigate();
+  const [deleteInvoiceModal, setDeleteInvoiceModal] = useState(false)
 
   const itemsPerPage = 10;
 
@@ -49,6 +53,13 @@ const InvoicePayments = () => {
     startIndex + itemsPerPage
   );
 
+  const handleViewInvoice = () =>{
+    navigate("view_invoice")
+  }
+
+  const handleDeleteInvoice = () => {
+    setDeleteInvoiceModal(true)
+  }
 
 
   return (
@@ -98,10 +109,10 @@ const InvoicePayments = () => {
                     <td>{data.amountreceived}</td>
                     <td className="">{data.amountpending}</td>
                     <td className="flex items-center justify-center py-2.5">
-                      <p className=" cursor-pointer p-1.5  bg-green-200 text-green-600 rounded-sm">
-                        <MdOutlineRemoveRedEye />
+                      <p onClick={handleViewInvoice} className=" cursor-pointer p-1.5  bg-green-200 text-green-600 rounded-sm">
+                        <MdOutlineRemoveRedEye  />
                       </p>
-                      <p className="mx-2 p-1.5  bg-pink-200 text-red-500 rounded-sm">
+                      <p  onClick = {handleDeleteInvoice} className=" cursor-pointer mx-2 p-1.5  bg-pink-200 text-red-500 rounded-sm">
                         {" "}
                         <RiDeleteBinLine />
                       </p>
@@ -125,6 +136,7 @@ const InvoicePayments = () => {
         currentPage={currentPage}
         onPageChange={setCurrentPage}
       />
+      {deleteInvoiceModal && <DeleteModal onclose={() => setDeleteInvoiceModal(false)} title="Invoice"/> }
     </>
   );
 };
