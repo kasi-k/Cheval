@@ -102,7 +102,7 @@ const Layout = () => {
           </ul>
         </div>
       </div>
-      <div className="w-full overflow-auto mx-2 ">
+      <div className="w-full overflow-auto mx-2 no-scrollbar">
         {/* Content Area */}
         <Headers Menus={Menus} />
         <div className="">
