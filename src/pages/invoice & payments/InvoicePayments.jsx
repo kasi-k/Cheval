@@ -9,6 +9,7 @@ import { useSearch } from "../../components/SearchBar";
 import { InvoiceData } from "../../components/Data";
 import { useNavigate } from "react-router-dom";
 import DeleteModal from "../../components/DeleteModal";
+import Filter from "../../components/Filter";
 
 const InvoicePayments = () => {
   const { searchTerm } = useSearch(); // Get search term from context
@@ -66,10 +67,7 @@ const InvoicePayments = () => {
     <>
       <NavBar title="Invoice & Payments" pagetitle="Invoice Table" />
       <div className="font-roboto-flex dark:text-white flex justify-end items-center mx-2 mb-2">
-        <p className="dark:bg-darkgray bg-white flex items-center px-4 py-2 gap-1.5 rounded-sm text-xs font-medium">
-          Filter
-          <BiFilterAlt />
-        </p>
+        <Filter/>
       </div>
       <div className="mx-2  h-[532px] dark:bg-darkgray bg-white rounded-lg">
         <div className="overflow-auto no-scrollbar">

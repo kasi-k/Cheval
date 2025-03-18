@@ -12,6 +12,7 @@ import AddVehicle from "./AddVehicle";
 import EditVehicle from "./EditVehicle";
 import DeleteModal from "../../components/DeleteModal";
 import { useNavigate } from "react-router-dom";
+import Filter from "../../components/Filter";
 
 const VehicleManagement = () => {
   const { searchTerm } = useSearch(); // Get search term from context
@@ -81,10 +82,7 @@ const VehicleManagement = () => {
         >
           + Add Vehicle
         </p>
-        <p className="cursor-default dark:bg-darkgray bg-white flex items-center px-4 py-2 gap-1.5 rounded-sm text-xs font-medium">
-          Filter
-          <BiFilterAlt />
-        </p>
+       <Filter/>
       </div>
       <div className="mx-2  h-[530px] dark:bg-darkgray bg-white rounded-lg">
         <div className="overflow-auto no-scrollbar">

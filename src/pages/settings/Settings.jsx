@@ -8,6 +8,7 @@ import NavBar from "../../components/NavBar";
 import { useSearch } from "../../components/SearchBar";
 import { RoleData } from "../../components/Data";
 import { Navigate, useNavigate } from "react-router-dom";
+import Filter from "../../components/Filter";
 
 const Settings = () => {
   const { searchTerm } = useSearch(); // Get search term from context
@@ -59,10 +60,7 @@ const Settings = () => {
       <NavBar title="Settings" pagetitle="Access Levels" />
       <div className="font-roboto-flex dark:text-white flex justify-end items-center mx-2 mb-2 gap-2">
         <button onClick = {handleRoleAccessLevel} className="bg-sidebar rounded-sm py-1.5 px-4 text-black">Add Role</button>
-             <p className="dark:bg-darkgray bg-white flex items-center px-4 py-2 gap-1.5 rounded-sm text-xs font-medium">
-               Filter
-               <BiFilterAlt />
-             </p>
+             <Filter/>
            </div>
       <div className="mx-2  h-[530px] dark:bg-darkgray bg-white rounded-lg">
         <div className="overflow-auto no-scrollbar">

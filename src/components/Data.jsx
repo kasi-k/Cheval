@@ -4,7 +4,7 @@ export const EnquiryData = [
   {
     sno: "1",
     enquiryno: "#24637",
-    enquirydate: "11.02.2025",
+    enquirydate: "13.03.2025",
     goodstype: "Electronics & Appliances",
     weight: "56 Kg",
     from: "name",

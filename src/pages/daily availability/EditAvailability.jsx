@@ -1,7 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { IoClose } from "react-icons/io5";
 
 const EditAvailability = ({ onclose }) => {
+  const [subDistricts, setSubDistricts]  = useState([""]);
+  const handleAddDistrict = () => {
+    if (subDistricts.length < 4) {
+      setSubDistricts([...subDistricts, ""]);
+    } else {
+      alert("You can only add up to 4 preferred districts!");
+    }
+  };
+
+  const handleDistrictChange = (index, value) => {
+    const updatedDistricts = [...subDistricts];
+    updatedDistricts[index] = value;
+    setSubDistricts(updatedDistricts);
+  };
   return (
     <div className=" font-roboto-flex fixed inset-0  grid justify-center items-center  backdrop-blur-xs  ">
       <div className=" mx-2 shadow-lg dark:bg-popup-gray bg-white dark:text-white lg:w-[500px] md:w-[500px] w-96 rounded-lg  ">
@@ -47,19 +61,30 @@ const EditAvailability = ({ onclose }) => {
                 placeholder="Enter preferred state"
                 className="col-span-7  placeholder:dark:text-white placeholder:text-xs placeholder:font-light border border-gray-500 rounded-lg  h-11 px-2 "
               />
-              <div className="col-span-12 place-self-end">
-                <button className="cursor-pointer  text-sidebar border-sidebar border px-6 py-1 rounded-sm">
-                 Add District
-                </button>
+                  <div className="col-span-12 place-self-end">
+                <p onClick = {handleAddDistrict} className="cursor-pointer  text-sidebar border-sidebar border px-6 py-1 rounded-sm">
+                  Add District
+                </p>
               </div>
-              <label className="grid col-span-5 text-sm font-semibold  ">
-                Preferred District 1
-              </label>
-              <input
-                type="text"
-                placeholder="Enter preferred district 1"
-                className="col-span-7  placeholder:dark:text-white placeholder:text-xs placeholder:font-light border border-gray-500 rounded-lg  h-11 px-2 "
-              />
+              {subDistricts.map((district, index) => (
+                <div
+                  key={index}
+                  className="col-span-12 grid grid-cols-12 gap-4 items-center"
+                >
+                  <label className="grid col-span-5 text-sm font-semibold">
+                    Preferred District {index + 1}
+                  </label>
+                  <input
+                    type="text"
+                    value={district}
+                    onChange={(e) =>
+                      handleDistrictChange(index, e.target.value)
+                    }
+                    placeholder={`Enter preferred district ${index + 1}`}
+                    className="col-span-7 placeholder:dark:text-white placeholder:text-xs placeholder:font-light border border-gray-500 rounded-lg h-11 px-2"
+                  />
+                </div>
+              ))}
             </div>
 
             <div className="   mx-5 flex justify-end gap-2 ">

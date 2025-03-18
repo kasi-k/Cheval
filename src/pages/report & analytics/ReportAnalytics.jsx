@@ -3,6 +3,7 @@ import NavBar from "../../components/NavBar";
 import { BiFilterAlt } from "react-icons/bi";
 import RevenueReport from "./RevenueReport";
 import BookingReport from "./BookingReport";
+import Filter from "../../components/Filter";
 
 const ReportAnalytics = () => {
   const [activeTab, setActiveTab] = useState("1");
@@ -32,10 +33,7 @@ const ReportAnalytics = () => {
           </p>
         </div>
         <div className="font-roboto-flex dark:text-white flex justify-end items-center  mb-2">
-          <p className="dark:bg-darkgray bg-white flex items-center px-4 py-2 gap-1.5 rounded-sm text-xs font-medium">
-            Filter
-            <BiFilterAlt />
-          </p>
+         <Filter/>
         </div>
       </div>
       {activeTab === "1" ? <RevenueReport /> : <BookingReport />}

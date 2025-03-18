@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 import AddDriver from "./AddDriver";
 import EditDriver from "./EditDriver";
 import DeleteModal from "../../components/DeleteModal";
+import Filter from "../../components/Filter";
 
 const DriverManagement = () => {
   const { searchTerm } = useSearch(); // Get search term from context
@@ -75,10 +76,7 @@ const DriverManagement = () => {
     <>
       <NavBar title="Driver Management" pagetitle="Driver Table" />
       <div className="font-roboto-flex dark:text-white flex justify-end items-center mx-2 mb-2 gap-2">
-        <p className="cursor-default dark:bg-darkgray bg-white flex items-center px-4 py-2 gap-1.5 rounded-sm text-xs font-medium">
-          Filter
-          <BiFilterAlt />
-        </p>
+     <Filter/>
         <p
           onClick={handleAddDriver}
           className="cursor-pointer dark:bg-sidebar bg-white flex items-center px-4 py-2 gap-1.5 rounded-sm text-sm font-semibold  w-48 justify-center text-black"

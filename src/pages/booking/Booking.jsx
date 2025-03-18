@@ -7,6 +7,7 @@ import { BiFilterAlt } from "react-icons/bi";
 import NavBar from "../../components/NavBar";
 import { useSearch } from "../../components/SearchBar";
 import { BookingData } from "../../components/Data";
+import Filter from "../../components/Filter";
 
 const Booking = () => {
   const { searchTerm } = useSearch(); // Get search term from context
@@ -55,10 +56,7 @@ const Booking = () => {
     <>
       <NavBar title="Booking" pagetitle="Booking Table" />
       <div className="font-roboto-flex dark:text-white flex justify-end items-center mx-2 mb-2">
-        <p className="dark:bg-darkgray bg-white flex items-center px-4 py-2 gap-1.5 rounded-sm text-xs font-medium">
-          Filter
-          <BiFilterAlt />
-        </p>
+       <Filter/>
       </div>
       <div className="mx-2  h-[532px] dark:bg-darkgray bg-white rounded-lg">
         <div className="overflow-auto no-scrollbar">

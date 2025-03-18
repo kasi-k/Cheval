@@ -2,12 +2,11 @@ import React, { useEffect, useState } from "react";
 import { HiArrowsUpDown } from "react-icons/hi2";
 import { IoClose } from "react-icons/io5";
 import Pagination from "../../components/Pagination";
-import { BiFilterAlt } from "react-icons/bi";
 import NavBar from "../../components/NavBar";
 import { useSearch } from "../../components/SearchBar";
-import { useNavigate } from "react-router-dom";
 import { EnquiryData } from "../../components/Data";
 import { BiSolidError } from "react-icons/bi";
+import Filter from "../../components/Filter";
 
 const BookingEnquiry = () => {
   const { searchTerm } = useSearch(); // Get search term from context
@@ -71,10 +70,7 @@ const BookingEnquiry = () => {
     <>
       <NavBar title="Booking Enquiries" pagetitle="Booking list" />
       <div className="font-roboto-flex dark:text-white flex justify-end items-center mx-2 mb-2">
-        <p className="dark:bg-darkgray bg-white flex items-center px-4 py-2 gap-1.5 rounded-sm text-xs font-medium">
-          Filter
-          <BiFilterAlt />
-        </p>
+    <Filter/>
       </div>
       <div className="mx-2  h-[532px] dark:bg-darkgray bg-white rounded-lg">
         <div className="overflow-auto no-scrollbar">
@@ -100,7 +96,11 @@ const BookingEnquiry = () => {
                 <th>Action</th>
               </tr>
             </thead>
-            <tbody className=" dark:bg-darkgray dark:text-white text-gray-600 cursor-default">
+            <tbody
+              className={`dark:bg-darkgray dark:text-white text-gray-600 cursor-default ${
+                bidded ? "dark:bg-gray-500" : ""
+              }`}
+            >
               {paginatedData.length > 0 ? (
                 paginatedData.map((data, index) => (
                   <tr
@@ -161,7 +161,9 @@ const BookingEnquiry = () => {
               <div className="grid justify-center px-6 py-6 gap-6 ">
                 <p className="text-center font-semibold text-2xl">Bid Now</p>
                 <form className="grid grid-cols-12 items-center font-normal text-base gap-4">
-                  <label className="col-span-5 font-semibold text-nowrap">Bidding Amount</label>
+                  <label className="col-span-5 font-semibold text-nowrap">
+                    Bidding Amount
+                  </label>
                   <input
                     type="text"
                     placeholder="Enter Bidding Amount"
@@ -177,8 +179,9 @@ const BookingEnquiry = () => {
 
                   {error && (
                     <p className="col-span-12 text-red-500 text-base font-normal my-2.5">
-                      <span  className="flex items-center gap-2">
-                      <BiSolidError /> ( Vehicle Details will visible once bit confirmed )
+                      <span className="flex items-center gap-2">
+                        <BiSolidError /> ( Vehicle Details will visible once bit
+                        confirmed )
                       </span>
                     </p>
                   )}
