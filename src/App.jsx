@@ -22,6 +22,7 @@ import ViewSupport from "./pages/help & support/ViewSupport";
 import AddRoleAccess from "./pages/settings/AddRoleAcess";
 import ViewAvailability from "./pages/daily availability/ViewAvailability";
 import ViewInvoice from "./pages/invoice & payments/ViewInvoice";
+import Viewbooking from "./pages/booking/Viewbooking";
 
 const App = () => {
   return (
@@ -32,10 +33,16 @@ const App = () => {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/booking_enquiries" element={<BookingEnquiry />} />
 
-            <Route path="/bookings" element={<Booking />} />
-            <Route path="/daily_availability" >
-            <Route index element={<DailyAvailability />}/>
-            <Route path="view_dailyavailability" element = {<ViewAvailability/>}/>
+            <Route path="/bookings">
+              <Route index element={<Booking />} />
+              <Route path="view_booking" element={<Viewbooking />} />
+            </Route>
+            <Route path="/daily_availability">
+              <Route index element={<DailyAvailability />} />
+              <Route
+                path="view_dailyavailability"
+                element={<ViewAvailability />}
+              />
             </Route>
             <Route path="/vehicle_management">
               <Route index element={<VehicleManagement />} />
@@ -46,22 +53,20 @@ const App = () => {
               <Route path="view_driver" element={<ViewDriver />} />
             </Route>
             <Route path="/invoice_payments">
-            <Route index element = {<InvoicePayments />}/>
-            <Route path="view_invoice" element = {<ViewInvoice/>}/>
+              <Route index element={<InvoicePayments />} />
+              <Route path="view_invoice" element={<ViewInvoice />} />
             </Route>
 
-            <Route path="/reports_analytics">
-              <Route index element={<ReportAnalytics />} />
-              <Route path="view_revenue" element={<ViewRevenue />} />
-            </Route>
+            <Route path="/reports_analytics" element={<ReportAnalytics />} />
+
             <Route path="/help_support">
-            <Route index  element={<HelpSupport />} />
-            <Route path="view_support" element = {<ViewSupport/>}/>
+              <Route index element={<HelpSupport />} />
+              <Route path="view_support" element={<ViewSupport />} />
             </Route>
             <Route path="/subscription" element={<Subscription />} />
-            <Route path="/settings"  >
-            <Route index element={<Settings />}/>
-            <Route path="roleaccess" element= {<AddRoleAccess/>}/>
+            <Route path="/settings">
+              <Route index element={<Settings />} />
+              <Route path="roleaccess" element={<AddRoleAccess />} />
             </Route>
           </Route>
         </Routes>

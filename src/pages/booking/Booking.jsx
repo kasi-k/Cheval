@@ -8,11 +8,15 @@ import NavBar from "../../components/NavBar";
 import { useSearch } from "../../components/SearchBar";
 import { BookingData } from "../../components/Data";
 import Filter from "../../components/Filter";
+import DeleteModal from "../../components/DeleteModal";
+import { useNavigate } from "react-router-dom";
 
 const Booking = () => {
   const { searchTerm } = useSearch(); // Get search term from context
   const [currentPage, setCurrentPage] = useState(1);
   const [filteredData, setFilteredData] = useState([]);
+  const [bookingDeleteModal, setBookingDeleteModal] = useState(false)
+  const navigate = useNavigate();
 
   const itemsPerPage = 10;
 
@@ -50,7 +54,13 @@ const Booking = () => {
     startIndex + itemsPerPage
   );
 
-
+  const handleViewBooking = () => {
+    navigate("view_booking")
+  }
+  
+  const handledeleteBooking = () => {
+    setBookingDeleteModal(true)
+  }
 
   return (
     <>
@@ -110,10 +120,10 @@ const Booking = () => {
                     </td>
                     <td className="">{data.driver}</td>
                     <td className="flex items-center justify-center py-2.5">
-                      <p className=" cursor-pointer p-1.5  bg-green-200 text-green-600 rounded-sm">
+                      <p onClick={handleViewBooking} className=" cursor-pointer p-1.5  bg-green-200 text-green-600 rounded-sm">
                         <MdOutlineRemoveRedEye />
                       </p>
-                      <p className="mx-2 p-1.5  bg-pink-200 text-red-500 rounded-sm">
+                      <p onClick={handledeleteBooking} className=" cursor-pointer mx-2 p-1.5  bg-pink-200 text-red-500 rounded-sm">
                         {" "}
                         <RiDeleteBinLine />
                       </p>
@@ -137,6 +147,7 @@ const Booking = () => {
         currentPage={currentPage}
         onPageChange={setCurrentPage}
       />
+      {bookingDeleteModal && <DeleteModal onclose={() => setBookingDeleteModal(false)} title="Booking"/>}
     </>
   );
 };
