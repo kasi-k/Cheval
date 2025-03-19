@@ -1,27 +1,42 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 import Logo from "../../assets/Cheval Logo.png";
 import  Icon from "../../assets/Logo Icon.png";
 const Headers = ({ Menus }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  
+    const dropdownRef = useRef(null);
+
+    useEffect(() => {
+      const handleClickOutside = (event) => {
+        if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+          setIsDropdownOpen(!isDropdownOpen)
+        }
+      };
+  
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, []);
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
   return (
-    <div className="">
+    <div ref={dropdownRef} className="">
       <p
         className="text-2xl md:hidden lg:hidden block"
-        onClick={toggleDropdown}
+       
       >
         <span className="flex items-center justify-center">
-        <img src={Icon} alt="Icon Image" className="size-14 dark:bg-transparent bg-black rounded-full my-1" />
+        <img   onClick={toggleDropdown} src={Icon} alt="Icon Image" className="size-14 dark:bg-transparent bg-black rounded-full my-1" />
         </span>
       </p>
 
       {isDropdownOpen && (
-        <div className="absolute  right-3 w-[395px] top-2 dark:bg-black bg-white dark:text-white text-gray-700  shadow-md lg:hidden md:hidden block rounded-2xl">
+        <div className="absolute   w-[395px] top-2 dark:bg-black bg-white dark:text-white text-gray-700  shadow-md lg:hidden md:hidden block rounded-2xl z-10">
           <div className="flex gap-2 justify-center  items-center pt-3 mx-3">
             <img src={Logo} alt="Logo Image" className=" w-60" />
           </div>
