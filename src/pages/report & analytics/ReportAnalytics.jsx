@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import NavBar from "../../components/NavBar";
-import { BiFilterAlt } from "react-icons/bi";
 import RevenueReport from "./RevenueReport";
 import BookingReport from "./BookingReport";
 import Filter from "../../components/Filter";

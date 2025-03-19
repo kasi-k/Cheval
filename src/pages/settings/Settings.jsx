@@ -3,7 +3,6 @@ import { HiArrowsUpDown } from "react-icons/hi2";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { FiEdit2 } from "react-icons/fi";
 import Pagination from "../../components/Pagination";
-import { BiFilterAlt } from "react-icons/bi";
 import NavBar from "../../components/NavBar";
 import { useSearch } from "../../components/SearchBar";
 import { RoleData } from "../../components/Data";

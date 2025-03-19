@@ -4,7 +4,6 @@ import { RiDeleteBinLine } from "react-icons/ri";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { FiEdit2 } from "react-icons/fi";
 import Pagination from "../../components/Pagination";
-import { BiFilterAlt } from "react-icons/bi";
 import NavBar from "../../components/NavBar";
 import { useSearch } from "../../components/SearchBar";
 import { VehicleData } from "../../components/Data";
