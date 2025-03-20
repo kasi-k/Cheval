@@ -69,8 +69,8 @@ const BookingEnquiry = () => {
   return (
     <>
       <NavBar title="Booking Enquiries" pagetitle="Booking list" />
-      <div className="font-roboto-flex dark:text-white flex justify-end items-center mx-2 mb-2">
-    <Filter/>
+      <div className="font-roboto-flex dark:text-white flex justify-between items-center mx-2 mb-2">
+      <p>Date:<span className="text-sidebar font-semibold text-lg mx-2">20.03.2025</span></p> <Filter/>
       </div>
       <div className="mx-2  h-[532px] dark:bg-darkgray bg-white rounded-lg">
         <div className="overflow-auto no-scrollbar">

@@ -23,6 +23,7 @@ import AddRoleAccess from "./pages/settings/AddRoleAcess";
 import ViewAvailability from "./pages/daily availability/ViewAvailability";
 import ViewInvoice from "./pages/invoice & payments/ViewInvoice";
 import Viewbooking from "./pages/booking/Viewbooking";
+import ConsignmentNote from "./pages/booking/ConsignmentNote";
 
 const App = () => {
   return (
@@ -35,7 +36,11 @@ const App = () => {
 
             <Route path="/bookings">
               <Route index element={<Booking />} />
-              <Route path="view_booking" element={<Viewbooking />} />
+              <Route path="view_booking">
+                <Route index element={<Viewbooking />} />
+
+                <Route path="view_challan" element={<ConsignmentNote />} />
+              </Route>
             </Route>
             <Route path="/daily_availability">
               <Route index element={<DailyAvailability />} />

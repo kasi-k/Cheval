@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import NavBar from "../../components/NavBar";
 import StarProgress from "../../components/StarProgress";
+import Challan from "./Challan";
+import Lr from "./Lr";
+import GoodsBills from "./GoodsBills";
 
 const Viewbooking = () => {
   const [viewMore, setViewMore] = useState(false);
@@ -10,6 +13,11 @@ const Viewbooking = () => {
   return (
     <>
       <NavBar title="Booking" pagetitle="View Booking" />
+      <div className="flex justify-end gap-2">
+        <p><Challan/></p>
+        <p><Lr/></p>
+        <p><GoodsBills/></p>
+      </div>
       <div className="font-roboto-flex mx-2 grid  grid-cols-12  gap-4 dark:text-white my-6 w-full">
         <div className="lg:col-span-3 md:col-span-6 col-span-12 p-6 space-y-4 dark:bg-darkgray bg-white   rounded-2xl">
           <p className="font-bold text-base">Enquiry Details</p>
