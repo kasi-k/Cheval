@@ -8,9 +8,9 @@ const Challan = () => {
   const dropdownRef = useRef(null);
 
   const options = [
-    { label: "Generate", value: "generate", path: "generate_challan" },
-    { label: "View", value: "view", path: "view_challan" },
-    { label: "Download", value: "download", path: "download_challan" },
+    { label: "Generate", value: "generate", path: "consignmentnote" },
+    { label: "View", value: "view", path: "consignmentnote" },
+    { label: "Download", value: "download", path: "consignmentnote" },
   ];
 
   useEffect(() => {

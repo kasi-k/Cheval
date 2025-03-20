@@ -8,9 +8,9 @@ const Lr = () => {
   const dropdownRef = useRef(null);
 
   const options = [
-    { label: "Generate", value: "generate", path: "generate_lr" },
-    { label: "View", value: "view", path: "view_lr" },
-    { label: "Download", value: "download", path: "download_lr" },
+    { label: "Generate", value: "generate", path: "consignmentnote" },
+    { label: "View", value: "view", path: "consignmentnote" },
+    { label: "Download", value: "download", path: "consignmentnote" },
   ];
 
   useEffect(() => {

@@ -5,27 +5,16 @@ import  Icon from "../../assets/Logo Icon.png";
 const Headers = ({ Menus }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   
-    const dropdownRef = useRef(null);
-
-    useEffect(() => {
-      const handleClickOutside = (event) => {
-        if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-          setIsDropdownOpen(!isDropdownOpen)
-        }
-      };
   
-      document.addEventListener("mousedown", handleClickOutside);
-      return () => {
-        document.removeEventListener("mousedown", handleClickOutside);
-      };
-    }, []);
+
+   
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
   return (
-    <div ref={dropdownRef} className="">
+    <div className="">
       <p
         className="text-2xl md:hidden lg:hidden block"
        
