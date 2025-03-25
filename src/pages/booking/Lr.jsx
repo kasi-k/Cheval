@@ -8,7 +8,6 @@ const Lr = () => {
   const dropdownRef = useRef(null);
 
   const options = [
-    { label: "Generate", value: "generate", path: "consignmentnote" },
     { label: "View", value: "view", path: "consignmentnote" },
     { label: "Download", value: "download", path: "consignmentnote" },
   ];

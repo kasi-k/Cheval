@@ -21,7 +21,7 @@ const Viewbooking = () => {
       <div className="font-roboto-flex mx-2 grid  grid-cols-12  gap-4 dark:text-white my-6 w-full">
         <div className="lg:col-span-3 md:col-span-6 col-span-12 p-6 space-y-4 dark:bg-darkgray bg-white   rounded-2xl">
           <p className="font-bold text-base">Enquiry Details</p>
-          <div className="grid  lg:grid-cols-5 md:grid-cols-4 grid-cols-4 gap-2 font-light text-xs">
+          <div className="grid  lg:grid-cols-5 grid-cols-4 gap-2 font-light text-xs">
             <p className="col-span-3">Enquiry Date</p>
             <p className="col-span-1">11.02.2025</p>
             <p className="col-span-3">Enquiry No</p>
@@ -30,18 +30,11 @@ const Viewbooking = () => {
         </div>
         <div className="lg:col-span-3 md:col-span-6 col-span-12 p-6 space-y-4 dark:bg-darkgray bg-white   rounded-2xl">
           <p className="font-bold text-base">Booking Company Details</p>
-          <div className="grid  lg:grid-cols-5 md:grid-cols-4 grid-cols-4 gap-2 font-light text-xs">
+          <div className="grid  lg:grid-cols-5 grid-cols-4 gap-2 font-light text-xs">
             <p className="col-span-3">Company Name</p>
             <p className="col-span-1 text-nowrap">Swift Logix</p>
             <p className="col-span-3">Shipping Date </p>
             <p className="col-span-1">11.02.2025</p>
-          </div>
-        </div>
-        <div className="lg:col-span-3 md:col-span-6 col-span-12 p-6 space-y-4 dark:bg-darkgray bg-white   rounded-2xl">
-          <p className="font-bold text-base">Packaging Type</p>
-          <div className="grid lg:grid-cols-7 md:grid-cols-5 grid-cols-4 gap-4 font-light text-xs">
-            <p className="col-span-3">Type</p>
-            <p className="col-span-1 text-nowrap">Box Packaging</p>
           </div>
         </div>
         <div className="lg:col-span-3 md:col-span-6 col-span-12 p-6 space-y-4 dark:bg-darkgray bg-white    rounded-2xl ">
@@ -52,8 +45,15 @@ const Viewbooking = () => {
           </p>
         </div>
         <div className="lg:col-span-3 md:col-span-6 col-span-12 p-6 space-y-4 dark:bg-darkgray bg-white   rounded-2xl">
+          <p className="font-bold text-base">Packaging Type</p>
+          <div className="grid lg:grid-cols-7 md:grid-cols-5 grid-cols-4 gap-4 font-light text-xs">
+            <p className="col-span-3">Type</p>
+            <p className="col-span-1 text-nowrap">Box Packaging</p>
+          </div>
+        </div>
+        <div className="lg:col-span-3 md:col-span-6 col-span-12 p-6 space-y-4 dark:bg-darkgray bg-white   rounded-2xl">
           <p className="font-bold text-base">Packaging Details</p>
-          <div className="grid  grid-cols-4 gap-2 font-light text-xs">
+          <div className="grid lg:grid-cols-5 grid-cols-4 gap-2 font-light text-xs">
             <p className="col-span-3">No of Package</p>
             <p className="col-span-1">2</p>
             <p className="col-span-3">Packaging Weight </p>
@@ -62,7 +62,7 @@ const Viewbooking = () => {
         </div>
         <div className="lg:col-span-3 md:col-span-6 col-span-12 p-6 space-y-4 lg:row-span-2 md:row-span-1 dark:bg-darkgray bg-white   rounded-2xl">
           <p className="font-bold text-base">From Location</p>
-          <div className="grid grid-cols-4  gap-2 font-light text-xs">
+          <div className="grid lg:grid-cols-5 grid-cols-4  gap-2 font-light text-xs">
             <p className="col-span-3">Street</p>
             <p className="col-span-1">Name</p>
             <p className="col-span-3">landmark</p>
@@ -79,7 +79,7 @@ const Viewbooking = () => {
         </div>
         <div className="lg:col-span-3 md:col-span-6 col-span-12 p-6 space-y-4 dark:bg-darkgray bg-white lg:row-span-2 md:row-span-1 rounded-2xl">
           <p className="font-bold text-base">To location</p>
-          <div className="grid  grid-cols-4 gap-2 font-light text-xs">
+          <div className="grid  lg:grid-cols-5 grid-cols-4 gap-2 font-light text-xs">
             <p className="col-span-3">Street</p>
             <p className="col-span-1">Name</p>
             <p className="col-span-3">landmark</p>
@@ -96,7 +96,7 @@ const Viewbooking = () => {
         </div>
         <div className="lg:col-span-3 md:col-span-6 col-span-12 p-6 space-y-4 dark:bg-darkgray bg-white lg:row-span-2 md:row-span-1  rounded-2xl">
           <p className="font-bold text-base">Vehicle Details</p>
-          <div className="grid grid-cols-4 gap-2 font-light text-xs">
+          <div className="grid lg:grid-cols-5 grid-cols-4 text-nowrap gap-2.5 font-light text-xs">
             <p className="col-span-3">Vehicle Type</p>
             <p className="col-span-1">Truck</p>
             <p className="col-span-3">Vehicle Model</p>
@@ -124,7 +124,7 @@ const Viewbooking = () => {
             <p className="col-span-1 text-nowrap">9854761203</p>
           </div>
         </div>
-        <div className="md:order-1  lg:col-span-9 md:col-span-12 col-span-12 grid grid-cols-12 p-6 space-y-4 gap-6 dark:bg-darkgray bg-white   rounded-2xl">
+        <div className="md:order-1  lg:col-span-9  col-span-12 grid grid-cols-12 p-6 space-y-4 gap-6 dark:bg-darkgray bg-white   rounded-2xl">
           <div className="col-span-6">
             <p className="font-bold text-base mb-2">Driver Details</p>
             <div className="grid grid-cols-5 gap-4 font-light text-xs">

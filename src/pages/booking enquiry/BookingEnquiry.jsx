@@ -7,6 +7,7 @@ import { useSearch } from "../../components/SearchBar";
 import { EnquiryData } from "../../components/Data";
 import { BiSolidError } from "react-icons/bi";
 import Filter from "../../components/Filter";
+import { IoMdTime } from "react-icons/io";
 
 const BookingEnquiry = () => {
   const { searchTerm } = useSearch(); // Get search term from context
@@ -70,7 +71,24 @@ const BookingEnquiry = () => {
     <>
       <NavBar title="Booking Enquiries" pagetitle="Booking list" />
       <div className="font-roboto-flex dark:text-white flex justify-between items-center mx-2 mb-2">
-      <p>Date:<span className="text-sidebar font-semibold text-lg mx-2">20.03.2025</span></p> <Filter/>
+        <div className="flex gap-4">
+          <p className="text-lg font-normal">
+            Date:
+            <span className="text-sidebar font-semibold text-lg mx-2">
+              20.03.2025
+            </span>
+          </p>{" "}
+          <p className="text-lg font-normal">
+            Batch Time:{" "}
+            <span className="text-sidebar font-semibold text-lg mx-2">
+              {" "}
+              9:30 am{" "}
+            </span>
+          </p>
+        </div>
+        <div className="flex items-center gap-4">
+          <IoMdTime className="size-6" /> <Filter />
+        </div>
       </div>
       <div className="mx-2  h-[532px] dark:bg-darkgray bg-white rounded-lg">
         <div className="overflow-auto no-scrollbar">
@@ -125,7 +143,7 @@ const BookingEnquiry = () => {
                         </p>
                       ) : (
                         <p className="cursor-pointer px-2 py-1.5 bg-green-300 text-green-800 rounded-sm">
-                          Bidded
+                          Quoted
                         </p>
                       )}
                     </td>
