@@ -102,16 +102,6 @@ export const EnquiryData = [
     to: "name",
     vehicletype: "Tanker",
   },
-  {
-    sno: "11",
-    enquiryno: "#24647",
-    enquirydate: "15.02.2025",
-    goodstype: "Electronics & Appliances",
-    weight: "56 Kg",
-    from: "name",
-    to: "name",
-    vehicletype: "Pickup Van",
-  },
 ];
 
 export const BookingData = [

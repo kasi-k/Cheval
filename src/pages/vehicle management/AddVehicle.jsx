@@ -4,7 +4,7 @@ import { IoClose } from "react-icons/io5";
 const AddVehicle = ({ onclose }) => {
   return (
     <div className=" font-roboto-flex fixed inset-0  grid justify-center items-center  backdrop-blur-xs  ">
-      <div className=" mx-2 shadow-lg dark:bg-popup-gray bg-white dark:text-white  rounded-lg ">
+      <div className=" mx-2 shadow-lg dark:bg-popup-gray bg-white dark:text-white  rounded-lg  ">
         <div className="grid  ">
           <button
             onClick={onclose}
@@ -14,14 +14,15 @@ const AddVehicle = ({ onclose }) => {
           </button>
           <h1 className="text-center font-bold text-xl py-2">Add Vehicle</h1>{" "}
           <form className=" my-5">
-            <div className=" grid lg:grid-cols-12 md:grid-cols-12  items-center lg:gap-5 md:gap-5 gap-3 mb-6 mx-5">
+            <div className=" grid lg:grid-cols-2 md:grid-cols-12  lg:gap-5 md:gap-5 gap-3 pb-2 mx-5">
+              <div className="grid lg:grid-cols-12 md:grid-cols-12  items-center lg:gap-5 md:gap-5 gap-3 pb-2 mx-5">
               <label className="col-span-5 text-sm font-semibold">
-                Vehicle Type
+                Vehicle Number
               </label>
               <input
                 type="text"
                 placeholder="Enter vehicle type"
-                className="col-span-7  placeholder:dark:text-white placeholder:text-xs placeholder:font-light border border-gray-500 rounded-lg w-68 h-11 px-2 "
+                className="col-span-7  placeholder:dark:text-white placeholder:text-xs placeholder:font-light border border-gray-500 rounded-lg h-10 px-2 "
               />
               <label className="col-span-5 text-sm font-semibold  ">
                 Vehicle Model
@@ -29,58 +30,103 @@ const AddVehicle = ({ onclose }) => {
               <input
                 type="text"
                 placeholder="Enter vehicle Model"
-                className="col-span-7 placeholder:dark:text-white placeholder:text-xs placeholder:font-light   border border-gray-500 rounded-lg w-68 h-11 px-2 "
+                className="col-span-7 placeholder:dark:text-white placeholder:text-xs placeholder:font-light   border border-gray-500 rounded-lg h-10 px-2 "
               />
               <label className="col-span-5 text-sm font-semibold  ">
-                Vehicle Owner
+                Vehicle Type
               </label>
               <input
                 type="text"
                 placeholder="Enter vehicle Owner"
-                className="col-span-7 placeholder:dark:text-white placeholder:text-xs placeholder:font-light   border border-gray-500 rounded-lg w-68 h-11 px-2 "
+                className="col-span-7 placeholder:dark:text-white placeholder:text-xs placeholder:font-light   border border-gray-500 rounded-lg h-10 px-2 "
               />
-              <label className="col-span-5 text-sm font-semibold  ">
-                Owner Phone
-              </label>
-              <input
-                type="text"
-                placeholder="Enter Owner Phone"
-                className="col-span-7 placeholder:dark:text-white placeholder:text-xs placeholder:font-light   border border-gray-500 rounded-lg w-68 h-11 px-2 "
-              />
-              <label className="col-span-5 text-sm font-semibold  ">
-                Vehicle Number
-              </label>
-              <input
-                type="text"
-                placeholder="Enter vehicle Number"
-                className="col-span-7  placeholder:dark:text-white placeholder:text-xs placeholder:font-light  border border-gray-500 rounded-lg w-68 h-11 px-2 "
-              />
+
               <label className="col-span-5 text-sm font-semibold  ">
                 RC Number
               </label>
               <input
                 type="text"
                 placeholder="Enter Rc Number"
-                className="col-span-7  placeholder:dark:text-white placeholder:text-xs placeholder:font-light border border-gray-500 rounded-lg w-68 h-11 px-2 "
+                className="col-span-7  placeholder:dark:text-white placeholder:text-xs placeholder:font-light border border-gray-500 rounded-lg h-10 px-2 "
+              />
+              <label className="col-span-5 text-sm font-semibold  ">
+                RC Expires
+              </label>
+              <input
+                type="text"
+                placeholder="Enter Rc Number"
+                className="col-span-7  placeholder:dark:text-white placeholder:text-xs placeholder:font-light border border-gray-500 rounded-lg h-10 px-2 "
+              />
+              <label className="col-span-5 text-sm font-semibold  ">
+                Permit Number
+              </label>
+              <input
+                type="text"
+                placeholder="Enter Rc Number"
+                className="col-span-7  placeholder:dark:text-white placeholder:text-xs placeholder:font-light border border-gray-500 rounded-lg h-10 px-2 "
+              />
+              <label className="col-span-5 text-sm font-semibold  ">
+                Permit Expires
+              </label>
+              <input
+                type="text"
+                placeholder="Enter Rc Number"
+                className="col-span-7  placeholder:dark:text-white placeholder:text-xs placeholder:font-light border border-gray-500 rounded-lg h-10 px-2 "
               />
 
               <label className="col-span-5  text-sm font-semibold">
-                Insurance{" "}
+                PUC Status{" "}
               </label>
               <input
                 type="text"
                 placeholder="Enter Insurance"
-                className="col-span-7 placeholder:dark:text-white placeholder:text-xs placeholder:font-light  border border-gray-500 rounded-lg   w-68  h-11 px-2 "
+                className="col-span-7 placeholder:dark:text-white placeholder:text-xs placeholder:font-light  border border-gray-500 rounded-lg h-10 px-2 "
               />
-
-              <label className="col-span-5 text-sm font-semibold ">
-                Permit
+              <label className="col-span-5 text-sm font-semibold  ">
+                Insurance Number
               </label>
               <input
                 type="text"
-                placeholder="Enter Permit"
-                className="col-span-7 placeholder:dark:text-white placeholder:text-xs placeholder:font-light  border border-gray-500 rounded-lg w-68 h-11 px-3"
+                placeholder="Enter Rc Number"
+                className="col-span-7  placeholder:dark:text-white placeholder:text-xs placeholder:font-light border border-gray-500 rounded-lg h-10 px-2 "
               />
+              <label className="col-span-5 text-sm font-semibold  ">
+                Insurance Expires
+              </label>
+              <input
+                type="text"
+                placeholder="Enter Rc Number"
+                className="col-span-7  placeholder:dark:text-white placeholder:text-xs placeholder:font-light border border-gray-500 rounded-lg h-10 px-2 "
+              />
+              </div>
+              <div className=" grid lg:grid-cols-12 md:grid-cols-12  lg:gap-5 md:gap-5 gap-3 pb-2 mx-5">
+              <label className="col-span-5 text-sm font-semibold">
+                Vehicle Number
+              </label>
+              <input
+                type="text"
+                placeholder="Enter vehicle type"
+                className="col-span-7  placeholder:dark:text-white placeholder:text-xs placeholder:font-light border border-gray-500 rounded-lg h-10 px-2 "
+              />
+              <label className="col-span-5 text-sm font-semibold  ">
+                Vehicle Model
+              </label>
+              <input
+                type="text"
+                placeholder="Enter vehicle Model"
+                className="col-span-7 placeholder:dark:text-white placeholder:text-xs placeholder:font-light   border border-gray-500 rounded-lg h-10 px-2 "
+              />
+              <label className="col-span-5 text-sm font-semibold  ">
+                Vehicle Type
+              </label>
+              <input
+                type="text"
+                placeholder="Enter vehicle Owner"
+                className="col-span-7 placeholder:dark:text-white placeholder:text-xs placeholder:font-light   border border-gray-500 rounded-lg h-10 px-2 "
+              />
+
+
+              </div>
             </div>
 
             <div className="   mx-5 flex justify-end gap-2 ">

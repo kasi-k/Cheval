@@ -116,7 +116,7 @@ const Viewbooking = () => {
           </div>
         </div>
         <div className="lg:col-span-3 md:col-span-6 col-span-12 p-6 space-y-4 dark:bg-darkgray bg-white   rounded-2xl">
-          <p className="font-bold text-base">Customer Details</p>
+          <p className="font-bold text-base">Consignor Details</p>
           <div className="grid lg:grid-cols-5 grid-cols-4 gap-2 font-light text-xs">
             <p className="col-span-3">Name</p>
             <p className="col-span-1 ">Cheval</p>

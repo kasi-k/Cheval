@@ -36,7 +36,7 @@ const NavBar = ({pagetitle, title}) => {
             KA
           </span>
         </p>
-        <div className="dark:text-white text-blue-400 ">
+        <div className="dark:text-white text-blue-400 hidden">
           <Toggle />
         </div>
       </div>

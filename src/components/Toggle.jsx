@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { BsToggleOff, BsToggleOn } from "react-icons/bs";
 
-const Toggle = () => {
+const Toggle = ({ hideToggle = false }) => {
+  // Default to dark mode unless explicitly set to false in localStorage
   const [darkMode, setDarkMode] = useState(
-    localStorage.getItem("darkMode") === "true"
+    localStorage.getItem("darkMode") !== "false"
   );
 
   useEffect(() => {
-    const storedTheme = localStorage.getItem("darkMode") === "true";
-    setDarkMode(storedTheme);
-    document.body.classList.toggle("dark", storedTheme);
+    document.body.classList.add("dark"); // Always enable dark mode
   }, []);
 
   useEffect(() => {
@@ -17,14 +16,14 @@ const Toggle = () => {
     document.body.classList.toggle("dark", darkMode);
   }, [darkMode]);
 
+  if (hideToggle) {
+    return null; // Hide toggle, keeping dark mode always on
+  }
+
   return (
     <div>
       <button onClick={() => setDarkMode((prev) => !prev)}>
-        {darkMode ? (
-          <BsToggleOn className="size-7" />
-        ) : (
-          <BsToggleOff className="size-7" />
-        )}
+        {darkMode ? <BsToggleOn className="size-7" /> : <BsToggleOff className="size-7" />}
       </button>
     </div>
   );
