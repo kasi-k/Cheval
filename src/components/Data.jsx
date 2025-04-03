@@ -112,7 +112,7 @@ export const BookingData = [
     shippingdate: "11.02.2025",
     from: "name",
     to: "name",
-    status: "confirmed",
+    status: "completed",
     driver: "name",
   },
   {
@@ -122,7 +122,7 @@ export const BookingData = [
     shippingdate: "12.02.2025",
     from: "name",
     to: "name",
-    status: "in transmit",
+    status: "completed",
     driver: "name",
   },
   {
@@ -142,7 +142,7 @@ export const BookingData = [
     shippingdate: "14.02.2025",
     from: "name",
     to: "name",
-    status: "confirmed",
+    status: "completed",
     driver: "name",
   },
   {
@@ -152,7 +152,7 @@ export const BookingData = [
     shippingdate: "15.02.2025",
     from: "name",
     to: "name",
-    status: "confirmed",
+    status: "completed",
     driver: "name",
   },
 ];

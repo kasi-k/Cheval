@@ -56,7 +56,7 @@ const Layout = () => {
   return (
     <div className=" font-roboto-flex flex dark:bg-popup-gray bg-blue-400 lg:py-6 lg:pl-6 md:py-6 md:pl-6  w-full h-screen">
       {/* Sidebar */}
-      <div className=" dark:bg-black dark:text-white bg-white text-black rounded-xl h-full text-nowrap w-72 lg:block md:block hidden">
+      <div className=" dark:bg-darkgray dark:text-white bg-white text-black rounded-xl h-full text-nowrap w-72 lg:block md:block hidden">
         <div className="flex justify-center my-2">
           <img src={Logo} alt="Logo Image" className="w-52" />
         </div>

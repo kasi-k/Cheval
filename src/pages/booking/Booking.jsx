@@ -110,8 +110,6 @@ const Booking = () => {
                            ${
                              {
                                completed: "text-green-600",
-                               confirmed: "text-yellow-600 ",
-                               "in transmit": "text-sky-500 ",
                              }[data.status]
                            }`}
                     >
