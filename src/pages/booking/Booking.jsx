@@ -98,7 +98,7 @@ const Booking = () => {
                     className="border-b-[1px] dark:border-black border-gray-400 text-center text-sm  "
                     key={index}
                   >
-                    <td className="">{data.sno}</td>
+                    <td className="">{(currentPage - 1) * itemsPerPage + index + 1}</td>
                     <td>{data.enquiryno}</td>
                     <td>{data.bookingcompany}</td>
                     <td>{data.shippingdate}</td>

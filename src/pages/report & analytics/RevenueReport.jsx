@@ -1,33 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { HiArrowsUpDown } from "react-icons/hi2";
-import { RiDeleteBinLine } from "react-icons/ri";
-import { MdOutlineRemoveRedEye } from "react-icons/md";
 import Pagination from "../../components/Pagination";
 import { useSearch } from "../../components/SearchBar";
-import { RevenueData } from "../../components/Data";
-import ViewRevenue from "./ViewRevenue";
-import DeleteModal from "../../components/DeleteModal";
-import { useNavigate } from "react-router-dom";
+import { RevenueReports } from "../../components/Data";
 
 const RevenueReport = () => {
   const { searchTerm } = useSearch(); // Get search term from context
   const [currentPage, setCurrentPage] = useState(1);
   const [filteredData, setFilteredData] = useState([]);
-  const [deleteModal, setDeleteModal] = useState(false);
-  const [viewRevenueReport, setViewRevenueReport] = useState(false);
-  const navigate = useNavigate();
 
   const itemsPerPage = 10;
 
   useEffect(() => {
     if (!searchTerm) {
-      setFilteredData(RevenueData); // Show all data if search is empty
+      setFilteredData(RevenueReports); // Show all data if search is empty
       return;
     }
 
     const lowerSearchTerm = searchTerm.toString().toLowerCase();
 
-    const filtered = RevenueData.filter((item) =>
+    const filtered = RevenueReports.filter((item) =>
       Object.values(item).some((value) => {
         const lowerValue = value.toString().toLowerCase();
 
@@ -52,95 +44,67 @@ const RevenueReport = () => {
     startIndex + itemsPerPage
   );
 
-  const handleViewReport = () => {
-    setViewRevenueReport(true);
-  };
-  const handleDelete = () => {
-    setDeleteModal(true);
-  };
-
   return (
     <>
-    {viewRevenueReport ? (<ViewRevenue/>) : (
-    <div>
-      <div className="mx-2  h-[514px] dark:bg-darkgray bg-white rounded-lg">
-        <div className="overflow-auto no-scrollbar">
-          <table className="font-roboto-flex w-full dark:text-white text-gray-800 whitespace-nowrap">
-            <thead>
-              <tr className=" font-semibold text-sm border-b-[1px] dark:border-black border-gray-400">
-                {[
-                  "S.no",
-                  "Date",
-                  "No Of Enquiry",
-                  "Bids Count",
-                  "Bid Accepted",
-                  "Bid Amount",
-                ].map((heading) => (
-                  <th key={heading} className="p-3.5">
-                    <h1 className="flex items-center justify-center  gap-1">
-                      {heading} <HiArrowsUpDown className="dark:text-white" />
-                    </h1>
-                  </th>
-                ))}
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody className=" dark:bg-darkgray dark:text-white text-gray-600 cursor-default">
-              {paginatedData.length > 0 ? (
-                paginatedData.map((data, index) => (
-                  <tr
-                    className="border-b-[1px] dark:border-black border-gray-400 text-center text-sm  "
-                    key={index}
-                  >
-                    <td className="">{data.sno}</td>
-                    <td>{data.date}</td>
-                    <td>{data.noofenquiry}</td>
-                    <td>{data.bidscount}</td>
-                    <td>{data.bidaccepted}</td>
-                    <td>{data.bidamount}</td>
-                    <td className="flex items-center justify-center py-2.5">
-                      <p
-                        onClick={handleViewReport}
-                        className=" cursor-pointer p-1.5  bg-green-200 text-green-600 rounded-sm"
-                      >
-                        <MdOutlineRemoveRedEye />
-                      </p>
-                      <p
-                        onClick={handleDelete}
-                        className="mx-2 p-1.5  bg-pink-200 text-red-500 rounded-sm"
-                      >
-                        {" "}
-                        <RiDeleteBinLine />
-                      </p>
+      <div>
+        <div className="mx-2  h-[514px] dark:bg-darkgray bg-white rounded-lg">
+          <div className="overflow-auto no-scrollbar">
+            <table className="font-roboto-flex w-full dark:text-white text-gray-800 whitespace-nowrap">
+              <thead>
+                <tr className=" font-semibold text-sm border-b-[1px] dark:border-black border-gray-400">
+                  {[
+                    "S.no",
+                    "Date",
+                    "Total Quote",
+                    "Quote Amount",
+                    "Payment Collected",
+                    "Payment Balance",
+                  ].map((heading) => (
+                    <th key={heading} className="p-3.5">
+                      <h1 className="flex items-center justify-center  gap-1">
+                        {heading} <HiArrowsUpDown className="dark:text-white" />
+                      </h1>
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody className=" dark:bg-darkgray dark:text-white text-gray-600 cursor-default">
+                {paginatedData.length > 0 ? (
+                  paginatedData.map((data, index) => (
+                    <tr
+                      className="border-b-[1px] dark:border-black border-gray-400 text-center text-sm  "
+                      key={index}
+                    >
+                      <td className="p-3">{(currentPage - 1) * itemsPerPage + index + 1}</td>
+                      <td>{data.date}</td>
+                      <td>{data.totalQuote}</td>
+                      <td>{data.quoteAmount}</td>
+                      <td>{data.paymentCollected}</td>
+                      <td>{data.paymentBalance}</td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td
+                      colSpan="10"
+                      className="text-center py-10 text-gray-500"
+                    >
+                      No matching results found.
                     </td>
                   </tr>
-                ))
-              ) : (
-                <tr>
-                  <td colSpan="10" className="text-center py-10 text-gray-500">
-                    No matching results found.
-                  </td>
-                </tr>
-              )}
-            </tbody>
-          </table>
+                )}
+              </tbody>
+            </table>
+          </div>
         </div>
-      </div>
-     
-      <Pagination
-        totalItems={filteredData.length}
-        itemsPerPage={itemsPerPage}
-        currentPage={currentPage}
-        onPageChange={setCurrentPage}
-      />
-      </div>
-    )}
-      {deleteModal && (
-        <DeleteModal
-          onclose={() => setDeleteModal(false)}
-          title="Revenue Report"
+
+        <Pagination
+          totalItems={filteredData.length}
+          itemsPerPage={itemsPerPage}
+          currentPage={currentPage}
+          onPageChange={setCurrentPage}
         />
-      )}
+      </div>
     </>
   );
 };

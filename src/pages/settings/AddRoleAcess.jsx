@@ -1,223 +1,213 @@
 import React, { useState } from "react";
+import NavBar from "../../components/NavBar";
 import { useNavigate } from "react-router-dom";
 
 const AddRoleAccess = () => {
-  const token = localStorage.getItem("token");
-  const navigate = useNavigate();
   const [roleName, setRoleName] = useState("");
-  const [accessLevels, setAccessLevels] = useState([]);
-  const [features, setFeatures] = useState([
-    { name: "Dashboard", value: "dashboard", checked: false },
-    { name: "Booking Enquiries", value: "bookingenquiries", checked: false },
-  ]);
+  const [selectedSettings, setSelectedSettings] = useState({});
+  const [permissions, setPermissions] = useState({});
+  const navigate = useNavigate();
 
-  const [errors, setErrors] = useState({
-    roleName: "",
-    featurePermissions: "",
-  });
+  const settingsOptions = [
+    "Dashboard",
+    "Enquiry Management",
+    "Shipment Management",
+    "Customer Management",
+    "Communications",
+    "Report & Analytics",
+    "Invoice & Payments",
+    "Terms Of Service",
+    "Privacy Policy",
+    "Subscription",
+    "Settings",
+  ];
 
-  const handleRoleNameChange = (event) => {
-    setRoleName(event.target.value);
+  const permissionOptions = [
+    "All",
+    "View",
+    "Create",
+    "Edit",
+    "Delete",
+    "Download",
+  ];
+
+  // Toggle Settings Checkbox
+  const toggleSetting = (setting) => {
+    setSelectedSettings((prev) => ({
+      ...prev,
+      [setting]: !prev[setting],
+    }));
+
+    setPermissions((prev) => {
+      if (prev[setting]) {
+        const updated = { ...prev };
+        delete updated[setting];
+        return updated;
+      }
+      return { ...prev, [setting]: [] };
+    });
   };
 
-  const handleFeatureChange = (index) => {
-    const newFeatures = [...features];
-    newFeatures[index].checked = !newFeatures[index].checked;
+  // Handle Permission Changes
+  const handlePermissionChange = (setting, permission, checked) => {
+    setPermissions((prev) => {
+      let updatedPermissions = prev[setting] || [];
 
-    if (newFeatures[index].checked) {
-      setAccessLevels([
-        ...accessLevels,
-        { feature: newFeatures[index].value, permissions: [] },
-      ]);
-    } else {
-      setAccessLevels(
-        accessLevels.filter(
-          (level) => level.feature !== newFeatures[index].value
-        )
-      );
-    }
+      if (permission === "All") {
+        // If "All" is checked, select all permissions
+        updatedPermissions = checked ? permissionOptions.slice(1) : [];
+      } else {
+        // Add or remove individual permission
+        updatedPermissions = checked
+          ? [...updatedPermissions, permission]
+          : updatedPermissions.filter((p) => p !== permission);
 
-    setFeatures(newFeatures);
+        // If "All" was checked and one is unchecked, uncheck "All"
+        if (!checked) {
+          updatedPermissions = updatedPermissions.filter((p) => p !== "All");
+        }
+      }
+
+      // If all individual permissions are checked, check "All" again
+      if (updatedPermissions.length === permissionOptions.length - 1) {
+        updatedPermissions = ["All", ...updatedPermissions];
+      }
+
+      return { ...prev, [setting]: updatedPermissions };
+    });
   };
 
-  const handlePermissionChange = (index, permission) => {
-    const newAccessLevels = [...accessLevels];
-    const featureIndex = newAccessLevels.findIndex(
-      (level) => level.feature === features[index].value
-    );
-
-    if (newAccessLevels[featureIndex].permissions.includes(permission)) {
-      newAccessLevels[featureIndex].permissions = newAccessLevels[
-        featureIndex
-      ].permissions.filter((p) => p !== permission);
-    } else {
-      newAccessLevels[featureIndex].permissions.push(permission);
-    }
-    setAccessLevels(newAccessLevels);
+  const handleSave = () => {
+    navigate("../");
   };
-
-  const handleAllPermissionChange = (index) => {
-    const newAccessLevels = [...accessLevels];
-    const featureIndex = newAccessLevels.findIndex(
-      (level) => level.feature === features[index].value
-    );
-
-    if (newAccessLevels[featureIndex].permissions.length === 5) {
-      newAccessLevels[featureIndex].permissions = [];
-    } else {
-      newAccessLevels[featureIndex].permissions = [
-        "view",
-        "create",
-        "edit",
-        "delete",
-        "download",
-      ];
-    }
-    setAccessLevels(newAccessLevels);
-  };
-
-  //   const handleSubmit = async (event) => {
-  //     event.preventDefault();
-  //     let formIsValid = true;
-  //     const newErrors = {
-  //       roleName: "",
-  //       featurePermissions: "",
-  //     };
-
-  //     // Validation for role name
-  //     if (roleName.trim() === "") {
-  //       newErrors.roleName = "Role name is required.";
-  //       formIsValid = false;
-  //     }
-
-  //     // Validation for feature permissions
-  //     accessLevels.forEach((level) => {
-  //       if (level.permissions.length === 0) {
-  //         newErrors.featurePermissions =
-  //           "Please select at least one permission for each selected feature.";
-  //         formIsValid = false;
-  //       }
-  //     });
-
-  //     setErrors(newErrors);
-
-  //     if (!formIsValid) {
-  //       return;
-  //     }
-
-  //     const newAccessLevels = [...accessLevels];
-
-  //     const roleAccessLevel = {
-  //       role_name: roleName,
-  //       accessLevels: newAccessLevels,
-  //       status: "active",
-  //       created_by_user: localStorage.getItem("name"),
-  //     };
-
-  //     try {
-  //       const response = await axios.post(`${API}/role/post`, roleAccessLevel, {
-  //         headers: {
-  //           Authorization: `Bearer ${token}`,
-  //         },
-  //       });
-  //       if (response.status === 200) {
-  //         toast.success("Role created Successfully");
-  //         navigate("/setting");
-  //       } else {
-  //         console.error("Error in posting data", response);
-  //         toast.error("Failed to Upload");
-  //       }
-  //     } catch (error) {
-  //       console.error("Error in posting data", error);
-  //     }
-  //   };
 
   return (
-    <form className="text-white">
-      <div>
-        <div className="flex gap-6 text-base items-center ">
-          <label>Role Name:</label>
+    <>
+      <NavBar title="Settings" pagetitle="Role Access" />
+      <div className="flex justify-between items-center p-3 rounded-md mb-2">
+        <div className="flex items-center gap-3">
+          <span className="text-base font-semibold text-white">Role name:</span>
           <input
             type="text"
             value={roleName}
-            onChange={handleRoleNameChange}
-            className="w-80 text-start border  rounded-lg ml-2 px-3 py-1 outline-none"
+            onChange={(e) => setRoleName(e.target.value)}
+            className="bg-darkgray text-sidebar text-base px-3 py-1.5 rounded-md outline-none"
           />
         </div>
-        {errors.roleName && (
-          <p className="error mt-3 text-red-500">{errors.roleName}</p>
-        )}
-        <div className="md:mx-6 mx-1 my-3 font-lexend overflow-y-auto no-scrollbar dark:bg-darkgray bg-white rounded-lg">
-          <div className="px-6 py-6 overflow-auto no-scrollbar">
-            <div className="">
-              <h3 className=" text-base text-primary ">Settings</h3>
-
-              {features.map((feature, index) => (
-                <div
-                  key={index}
-                  className="md:grid md:grid-cols-3 mb-3 text-base gap-3 items-start"
-                >
-                  <div className="flex gap-3">
+        <div className="flex gap-3">
+          <button
+            onClick={() => navigate("../")}
+            className="cursor-pointer border border-sidebar text-sidebar px-8 py-2 rounded-sm"
+          >
+            Cancel
+          </button>
+          <p onClick={handleSave} className="bg-sidebar px-8 py-2 rounded-sm">
+            Save
+          </p>
+        </div>
+      </div>
+      <div className="bg-darkgray text-white p-6 mx-3 rounded-lg shadow-lg ">
+        <div className="grid grid-cols-3 ">
+          {/* Settings Column */}
+          <div className="border-r-2  border-gray-100 p-3">
+            <h2 className="text-lg font-medium mb-4 w-1/2 text-center">
+              Settings
+            </h2>
+            {settingsOptions.map((setting) => (
+              <div key={setting} className="flex items-center gap-4 mb-3">
+                <label className="flex items-center gap-2 cursor-pointer">
+                  <label className="relative flex items-center cursor-pointer">
                     <input
                       type="checkbox"
-                      checked={feature.checked}
-                      onChange={() => handleFeatureChange(index)}
+                      checked={!!selectedSettings[setting]}
+                      onChange={() => toggleSetting(setting)}
+                      className="appearance-none w-5 h-5 border-2 border-gray-100 rounded-md checked:bg-white checked:border-transparent focus:outline-none transition-all duration-200"
                     />
-                    <label>{feature.name}</label>
-                  </div>
-                  <div
-                    className={`transition-all duration-300 ${
-                      feature.checked
-                        ? "opacity-100"
-                        : "opacity-0 h-0 overflow-hidden"
-                    }`}
-                  >
-                    <div className="flex  gap-3">
-                      <div className="flex items-center gap-2 text-sm">
-                        <input
-                          type="checkbox"
-                          checked={
-                            accessLevels.find(
-                              (level) => level.feature === features[index].value
-                            )?.permissions.length === 5 || false
-                          }
-                          onChange={() => handleAllPermissionChange(index)}
-                        />
-                        <label>All</label>
-                      </div>
-                      {["view", "create", "edit", "delete", "download"].map(
-                        (perm) => (
-                          <div
-                            key={perm}
-                            className="flex items-center gap-2 text-sm"
-                          >
-                            <input
-                              type="checkbox"
-                              checked={
-                                accessLevels
-                                  .find(
-                                    (level) =>
-                                      level.feature === features[index].value
-                                  )
-                                  ?.permissions.includes(perm) || false
-                              }
-                              onChange={() =>
-                                handlePermissionChange(index, perm)
-                              }
-                            />
-                            <label className="capitalize">{perm}</label>
-                          </div>
-                        )
+                    {/* Custom Checkmark */}
+                    <span className="absolute w-5 h-5 flex justify-center items-center pointer-events-none">
+                      {selectedSettings[setting] && (
+                        <svg
+                          className="w-10 h-4 text-black"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="3"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M5 13l4 4L19 7"
+                          ></path>
+                        </svg>
                       )}
+                    </span>
+                  </label>
+
+                  {setting}
+                </label>
+              </div>
+            ))}
+          </div>
+
+          {/* Permissions Column */}
+          <div className="p-4">
+            <h2 className="text-lg font-medium mb-2">Permissions</h2>
+            {settingsOptions.map((setting) => (
+              <div key={setting} className=" flex items-center">
+                {selectedSettings[setting] ? (
+                  <div className="flex items-center justify-between p-2 rounded-md">
+                    <div className="flex gap-4 w-3/4">
+                      {permissionOptions.map((perm) => (
+                        <label
+                          key={perm}
+                          className="flex items-center gap-4 cursor-pointer text-sm"
+                        >
+                          <input
+                            type="checkbox"
+                            checked={
+                              permissions[setting]?.includes(perm) || false
+                            }
+                            onChange={(e) =>
+                              handlePermissionChange(
+                                setting,
+                                perm,
+                                e.target.checked
+                              )
+                            }
+                            className="appearance-none w-5 h-5 border-2 border-gray-100 rounded-md checked:bg-white checked:border-transparent focus:outline-none transition-all duration-200"
+                          />
+                          {/* Custom Checkmark */}
+                          <span className="absolute w-5 h-5 flex justify-center items-center pointer-events-none">
+                            {permissions[setting]?.includes(perm) && (
+                              <svg
+                                className="w-10 h-4 text-black"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="3"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  d="M5 13l4 4L19 7"
+                                ></path>
+                              </svg>
+                            )}
+                          </span>
+                          {perm}
+                        </label>
+                      ))}
                     </div>
                   </div>
-                </div>
-              ))}
-            </div>
+                ) : (
+                  <div className="h-9"></div> // Keeps spacing even when unchecked
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </div>
-    </form>
+    </>
   );
 };
 

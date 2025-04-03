@@ -10,7 +10,6 @@ import { BiTrafficCone } from "react-icons/bi"; // Vehicle Management
 import { FiUsers } from "react-icons/fi"; //Driver Management
 import { FaFileInvoiceDollar } from "react-icons/fa6"; // Invoice & Payment
 import { GoReport } from "react-icons/go"; // Report & Analysis
-import { CiSquareQuestion } from "react-icons/ci"; // Help & Support
 import { TbWallet } from "react-icons/tb";
 import { IoSettingsOutline } from "react-icons/io5";
 
@@ -49,11 +48,7 @@ const Layout = () => {
       icon: <GoReport />,
       to: "/reports_analytics",
     },
-    {
-      title: "Help & Support",
-      icon: <CiSquareQuestion />,
-      to: "/help_support",
-    },
+
     { title: "Subscription", icon: <TbWallet />, to: "/subscription" },
     { title: "Settings", icon: <IoSettingsOutline />, to: "/settings" },
   ].filter(Boolean);

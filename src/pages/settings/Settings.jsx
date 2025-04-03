@@ -8,11 +8,13 @@ import { useSearch } from "../../components/SearchBar";
 import { RoleData } from "../../components/Data";
 import { Navigate, useNavigate } from "react-router-dom";
 import Filter from "../../components/Filter";
+import AddUser from "./AddUser";
 
 const Settings = () => {
   const { searchTerm } = useSearch(); // Get search term from context
   const [currentPage, setCurrentPage] = useState(1);
   const [filteredData, setFilteredData] = useState([]);
+  const [addUserModal, setAddUserModal] = useState(false);
   const navigate = useNavigate();
 
   const itemsPerPage = 10;
@@ -49,18 +51,32 @@ const Settings = () => {
     startIndex,
     startIndex + itemsPerPage
   );
- const handleRoleAccessLevel = () =>{
-  navigate("roleaccess")
- }
-
+  const handleRoles = () => {
+    navigate("roles");
+  };
+  const handleAddUser = () => {
+    setAddUserModal(true);
+  };
 
   return (
     <>
-      <NavBar title="Settings" pagetitle="Access Levels" />
+      <NavBar title="Settings" pagetitle="user" />
       <div className="font-roboto-flex dark:text-white flex justify-end items-center mx-2 mb-2 gap-2">
-        <button onClick = {handleRoleAccessLevel} className="bg-sidebar rounded-sm py-1.5 px-4 text-black">Add Role</button>
-             <Filter/>
-           </div>
+        <p
+          onClick={handleAddUser}
+          className=" cursor-pointer bg-sidebar rounded-sm py-1.5 px-4 text-black"
+        >
+          {" "}
+          + Add User
+        </p>
+        <button
+          onClick={handleRoles}
+          className=" cursor-pointer bg-sidebar rounded-sm py-1.5 px-4 text-black"
+        >
+          Roles
+        </button>
+        <Filter />
+      </div>
       <div className="mx-2  h-[530px] dark:bg-darkgray bg-white rounded-lg">
         <div className="overflow-auto no-scrollbar">
           <table className="font-roboto-flex w-full dark:text-white text-gray-800 whitespace-nowrap">
@@ -126,6 +142,7 @@ const Settings = () => {
         currentPage={currentPage}
         onPageChange={setCurrentPage}
       />
+      {addUserModal && <AddUser onclose={() => setAddUserModal(false)} />}
     </>
   );
 };

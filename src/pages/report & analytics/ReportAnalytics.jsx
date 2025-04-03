@@ -3,6 +3,7 @@ import NavBar from "../../components/NavBar";
 import RevenueReport from "./RevenueReport";
 import BookingReport from "./BookingReport";
 import Filter from "../../components/Filter";
+import RejectionReport from "./RejectionReport";
 
 const ReportAnalytics = () => {
   const [activeTab, setActiveTab] = useState("1");
@@ -30,12 +31,20 @@ const ReportAnalytics = () => {
           >
             Booking Report
           </p>
+          <p
+            className={`px-3 py-3 font-semibold rounded-sm text-sm ${
+              activeTab === "3" ? "bg-sidebar dark:text-black" : ""
+            }`}
+            onClick={() => setActiveTab("3")}
+          >
+            Rejection Report
+          </p>
         </div>
         <div className="font-roboto-flex dark:text-white flex justify-end items-center  mb-2">
          <Filter/>
         </div>
       </div>
-      {activeTab === "1" ? <RevenueReport /> : <BookingReport />}
+      {activeTab === "1" ? <RevenueReport /> : activeTab === "2"? <BookingReport />:<RejectionReport/>}
     </>
   );
 };

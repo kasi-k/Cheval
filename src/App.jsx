@@ -4,28 +4,36 @@ import Layout from "./pages/layout/Layout";
 import Dashboard from "./pages/dashboard/Dashboard";
 import BookingEnquiry from "./pages/booking enquiry/BookingEnquiry";
 import Booking from "./pages/booking/Booking";
-import DailyAvailability from "./pages/daily availability/DailyAvailability";
-import VehicleManagement from "./pages/vehicle management/VehicleManagement";
-import DriverManagement from "./pages/driver management/DriverManagement";
-import InvoicePayments from "./pages/invoice & payments/InvoicePayments";
-import ReportAnalytics from "./pages/report & analytics/ReportAnalytics";
-import HelpSupport from "./pages/help & support/HelpSupport";
-import Subscription from "./pages/subscription/Subscription";
-import Settings from "./pages/settings/Settings";
-import ViewVehicle from "./pages/vehicle management/ViewVehicle";
-import ViewDriver from "./pages/driver management/ViewDriver";
-import ViewSupport from "./pages/help & support/ViewSupport";
-import AddRoleAccess from "./pages/settings/AddRoleAcess";
-import ViewAvailability from "./pages/daily availability/ViewAvailability";
-import ViewInvoice from "./pages/invoice & payments/ViewInvoice";
 import Viewbooking from "./pages/booking/Viewbooking";
 import ConsignmentNote from "./pages/booking/ConsignmentNote";
+import DailyAvailability from "./pages/daily availability/DailyAvailability";
+import ViewAvailability from "./pages/daily availability/ViewAvailability";
+import VehicleManagement from "./pages/vehicle management/VehicleManagement";
+import ViewVehicle from "./pages/vehicle management/ViewVehicle";
+import DriverManagement from "./pages/driver management/DriverManagement";
+import ViewDriver from "./pages/driver management/ViewDriver";
+import InvoicePayments from "./pages/invoice & payments/InvoicePayments";
+import ViewInvoice from "./pages/invoice & payments/ViewInvoice";
+import ReportAnalytics from "./pages/report & analytics/ReportAnalytics";
+import Subscription from "./pages/subscription/Subscription";
+import Settings from "./pages/settings/Settings";
+import AddRoleAccess from "./pages/settings/AddRoleAcess";
+import Login from "./pages/login/Login";
+import SubscriptionPlans from "./pages/subscription/SubscriptionPlans";
+import Roles from "./pages/settings/Roles";
+import ForgotPassword from "./pages/login/ForgotPassword";
+import ResetPassword from "./pages/login/ResetPassword";
+import PasswordChange from "./pages/login/PasswordChange";
 
 const App = () => {
   return (
     <>
       <BrowserRouter>
         <Routes>
+          <Route path="" element={<Login />} />
+          <Route path="/forgot_password" element={<ForgotPassword />} />
+          <Route path="/reset_password" element={<ResetPassword />} />
+          <Route path="/password_changed" element={<PasswordChange/>} />
           <Route path="/" element={<Layout />}>
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/booking_enquiries" element={<BookingEnquiry />} />
@@ -60,14 +68,16 @@ const App = () => {
 
             <Route path="/reports_analytics" element={<ReportAnalytics />} />
 
-            <Route path="/help_support">
-              <Route index element={<HelpSupport />} />
-              <Route path="view_support" element={<ViewSupport />} />
+            <Route path="/subscription">
+              <Route index element={<Subscription />} />
+              <Route path="subscriptionplans" element={<SubscriptionPlans />} />
             </Route>
-            <Route path="/subscription" element={<Subscription />} />
             <Route path="/settings">
               <Route index element={<Settings />} />
-              <Route path="roleaccess" element={<AddRoleAccess />} />
+              <Route path="roles">
+                <Route index element={<Roles />} />
+                <Route path="roleaccess" element={<AddRoleAccess />} />
+              </Route>
             </Route>
           </Route>
         </Routes>

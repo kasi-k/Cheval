@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { HiArrowsUpDown } from "react-icons/hi2";
 import Pagination from "../../components/Pagination";
 import { useSearch } from "../../components/SearchBar";
-import { BookingReports } from "../../components/Data";
+import { RejectionReports } from "../../components/Data";
 
-const BookingReport = () => {
+const RejectionReport = () => {
   const { searchTerm } = useSearch(); // Get search term from context
   const [currentPage, setCurrentPage] = useState(1);
   const [filteredData, setFilteredData] = useState([]);
@@ -13,13 +13,13 @@ const BookingReport = () => {
 
   useEffect(() => {
     if (!searchTerm) {
-      setFilteredData(BookingReports); // Show all data if search is empty
+      setFilteredData(RejectionReports); // Show all data if search is empty
       return;
     }
 
     const lowerSearchTerm = searchTerm.toString().toLowerCase();
 
-    const filtered = BookingReports.filter((item) =>
+    const filtered = RejectionReports.filter((item) =>
       Object.values(item).some((value) => {
         const lowerValue = value.toString().toLowerCase();
 
@@ -55,10 +55,10 @@ const BookingReport = () => {
                   {[
                     "S.no",
                     "Date",
-                    "No Of Enquiry",
-                    "Bids Count",
-                    "Bid Accepted",
-                    "Total Quote",
+                    "Total Enquiries",
+                    "Quoted",
+                    "Rejected",
+                    "Rejected Percentage",
                   ].map((heading) => (
                     <th key={heading} className="p-3.5">
                       <h1 className="flex items-center justify-center  gap-1">
@@ -75,12 +75,14 @@ const BookingReport = () => {
                       className="border-b-[1px] dark:border-black border-gray-400 text-center text-sm  "
                       key={index}
                     >
-                      <td className="p-3">{(currentPage - 1) * itemsPerPage + index + 1}</td>
+                      <td className="p-3">
+                        {(currentPage - 1) * itemsPerPage + index + 1}
+                      </td>
                       <td>{data.date}</td>
-                      <td>{data.noOfEnquiry}</td>
-                      <td>{data.bidsCount}</td>
-                      <td>{data.bidAccepted}</td>
-                      <td>{data.totalQuote}</td>
+                      <td>{data.totalEnquiries}</td>
+                      <td>{data.quoted}</td>
+                      <td>{data.rejected}</td>
+                      <td>{data.rejectedPercentage}</td>
                     </tr>
                   ))
                 ) : (
@@ -108,4 +110,4 @@ const BookingReport = () => {
   );
 };
 
-export default BookingReport;
+export default RejectionReport;
