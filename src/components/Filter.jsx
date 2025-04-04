@@ -35,7 +35,8 @@ const Filter = ({ onFilterChange }) => {
   };
 
   return (
-    <div ref={dropdownRef} className="relative inline-block text-left">
+    <>
+    <div ref={dropdownRef} className=" inline-block text-left">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className=" cursor-pointer dark:bg-darkgray bg-white flex items-center px-4 py-2 gap-1.5 rounded-sm text-xs font-medium"
@@ -45,7 +46,8 @@ const Filter = ({ onFilterChange }) => {
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-40 rounded-md shadow-lg  dark:bg-white dark:text-black z-10">
+        <div className="relative">
+        <div className=" absolute right-0 mt-2 w-40 rounded-md shadow-lg  dark:bg-white dark:text-black ">
           <div className="py-1 text-sm font-semibold">
             {options.map((option) => (
               <button
@@ -58,8 +60,10 @@ const Filter = ({ onFilterChange }) => {
             ))}
           </div>
         </div>
+        </div>
       )}
     </div>
+    </>
   );
 };
 
