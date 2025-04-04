@@ -23,7 +23,7 @@ const PasswordChange = () => {
           </p>
 
           <button
-            onClick={() => navigate("..")}
+            onClick={() => navigate("/login", { state: { fromPasswordChange: true } })}
             className=" cursor-pointer bg-sidebar text-black w-full py-2 my-4 rounded-md text-lg font-semibold transition "
           >
             Login In Now

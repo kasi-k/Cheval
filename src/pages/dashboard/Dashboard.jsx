@@ -87,7 +87,7 @@ const Dashboard = () => {
           {/* Shipment Summary */}
           <div>
             <div className="grid grid-cols-2 gap-2 mb-4">
-              <div className=" cursor-pointer  bg-darkgray px-4 py-4  rounded-lg">
+              <div onClick={()=>navigate("/bookings")} className=" cursor-pointer  bg-darkgray px-4 py-4  rounded-lg">
                 <span className="flex items-center gap-16">
                   <FolderOpenDot className="stroke-2 size-14 text-sidebar  bg-popup-gray px-3 py-2 rounded-lg" />
                   <p className="text-3xl font-bold">12</p>
@@ -95,7 +95,7 @@ const Dashboard = () => {
                 <p className="pt-5 text-sm font-medium">Active Shipment</p>
               </div>
               <div
-                onClick={() => navigate("/shipment_manage")}
+                onClick={() => navigate("/bookings")}
                 className=" cursor-pointer  bg-darkgray px-4 py-4  rounded-lg"
               >
                 {" "}

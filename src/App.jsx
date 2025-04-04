@@ -24,16 +24,27 @@ import Roles from "./pages/settings/Roles";
 import ForgotPassword from "./pages/login/ForgotPassword";
 import ResetPassword from "./pages/login/ResetPassword";
 import PasswordChange from "./pages/login/PasswordChange";
+import SignUp from "./pages/auth/SignUp";
+import SignPhoneOtp from "./pages/auth/SignPhoneOtp";
+import SignEmailOtp from "./pages/auth/SignEmailOtp";
+import SubscribePage from "./pages/auth/SubscribePage";
+import EditProfile from "./pages/auth/EditProfile";
+
 
 const App = () => {
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="" element={<Login />} />
+          <Route path="" element={<SignUp />} />
+          <Route path="/phone_otpsignup" element={<SignPhoneOtp />} />
+          <Route path="/email_otpsignup" element={<SignEmailOtp />} />
+          <Route path="/subscribe" element={<SubscribePage />} />
+          <Route path="/edit_profile" element={<EditProfile />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/forgot_password" element={<ForgotPassword />} />
           <Route path="/reset_password" element={<ResetPassword />} />
-          <Route path="/password_changed" element={<PasswordChange/>} />
+          <Route path="/password_changed" element={<PasswordChange />} />
           <Route path="/" element={<Layout />}>
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/booking_enquiries" element={<BookingEnquiry />} />

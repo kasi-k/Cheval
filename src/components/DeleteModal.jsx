@@ -5,7 +5,7 @@ import Delete from "../assets/Delete.png";
 const DeleteModal = ({ title, onclose, Children }) => {
   return (
     <>
-      <div className=" font-roboto-flex fixed inset-0 flex justify-center  items-center backdrop-blur-sm ">
+      <div className=" font-roboto-flex fixed inset-0 flex justify-center  items-center backdrop-blur-sm drop-shadow-lg">
         <div className=" dark:bg-popup-gray bg-black text-white ">
           <button
             onClick={onclose}

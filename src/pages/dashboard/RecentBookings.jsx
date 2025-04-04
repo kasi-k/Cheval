@@ -98,8 +98,8 @@ const RecentBookings = () => {
                   >
                     <td>{(currentPage - 1) * itemsPerPage + index + 1}</td>
                     <td>{data.enquiryno}</td>
-                    <td>{data.to}</td>
                     <td>{data.vehicletype}</td>
+                    <td>{data.to}</td>
                     <td className="flex items-center justify-center py-1.5 text-sm">
                       {!biddedRows[data.sno] ? (
                         <p

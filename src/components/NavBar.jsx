@@ -3,22 +3,13 @@ import Toggle from "./Toggle";
 import { Search, Bell } from "lucide-react";
 import { useSearch } from "./SearchBar";
 import ProfileDropdown from "./ProfileDropDown";
-import Logout from "../pages/auth/Logout";
 
 const NavBar = ({ pagetitle, title }) => {
   const { searchTerm, setSearchTerm } = useSearch();
-  const [profileDropdown, setProfileDropDown] = useState(false);
-   const [logoutModal, setLogoutModal] = useState(false);
-  const dropdownRef = useRef(null);
-
-  // Toggle dropdown
-  const handleDropDown = () => {
-    setProfileDropDown(!profileDropdown);
-  };
 
   return (
     <>
-      <div className="font-roboto-flex flex-wrap flex justify-between items-center text-sm mb-1.5 overflow-auto no-scrollbar">
+      <div className=" font-roboto-flex flex-wrap flex justify-between items-center text-sm mb-1.5 overflow-auto no-scrollbar">
         <div className="mx-2 dark:text-[#DBE9FF] space-y-1">
           <div className="flex gap-1 font-normal text-base">
             <p className="">{title}</p>/<p>{pagetitle}</p>
@@ -45,22 +36,17 @@ const NavBar = ({ pagetitle, title }) => {
           <p className="text-amber-50 bg-popup-gray lg:p-2 md:p-2 p-1.5 rounded-full">
             <Bell className="size-5" />
           </p>
-          <div className="dark:text-amber-50 font-roboto-flex text-xs text-nowrap relative">
+          <p className=" flex  items-center gap-2 dark:text-amber-50 font-roboto-flex text-xs text-nowrap relative">
             Profile name
-            <span
-              onClick={handleDropDown}
-              className="text-amber-50 bg-popup-gray lg:p-2 md:p-2 p-1.5 mx-1.5 rounded-full cursor-pointer"
-            >
-              KA
+            <span className="absolute right-20 z-50" >
+              <ProfileDropdown />
             </span>
-          </div>
+          </p>
           <div className="dark:text-white text-blue-400 mt-2 hidden ">
             <Toggle />
           </div>
         </div>
       </div>
-    {profileDropdown && <ProfileDropdown setLogoutModal={setLogoutModal} setProfileDropDown={setProfileDropDown}/>}
-      {logoutModal && <Logout onclose={()=>setLogoutModal(false)}/>}
     </>
   );
 };

@@ -9,12 +9,16 @@ import { RoleData } from "../../components/Data";
 import { Navigate, useNavigate } from "react-router-dom";
 import Filter from "../../components/Filter";
 import AddUser from "./AddUser";
+import EditUser from "./EditUser";
+import DeleteModal from "../../components/DeleteModal";
 
 const Settings = () => {
   const { searchTerm } = useSearch(); // Get search term from context
   const [currentPage, setCurrentPage] = useState(1);
   const [filteredData, setFilteredData] = useState([]);
   const [addUserModal, setAddUserModal] = useState(false);
+  const [editUserModal, setEditUserModal] = useState(false)
+  const [deleteModal, setDeleteModal] = useState(false)
   const navigate = useNavigate();
 
   const itemsPerPage = 10;
@@ -57,6 +61,13 @@ const Settings = () => {
   const handleAddUser = () => {
     setAddUserModal(true);
   };
+  const handleEditUser = () => {
+    setEditUserModal(true);
+  };
+  const handleDeleteUser = () => {
+    setDeleteModal(true);
+  };
+
 
   return (
     <>
@@ -115,10 +126,10 @@ const Settings = () => {
                     <td>{data.status}</td>
                     <td>{data.createdby}</td>
                     <td className="flex items-center justify-center py-2.5">
-                      <p className="p-1.5 bg-blue-300 text-blue-500 rounded-sm mx-2">
+                      <p onClick={handleEditUser} className=" cursor-pointer p-1.5 bg-blue-300 text-blue-500 rounded-sm mx-2">
                         <FiEdit2 />
                       </p>
-                      <p className="mx-2 p-1.5  bg-pink-200 text-red-500 rounded-sm">
+                      <p onClick={handleDeleteUser} className=" cursor-pointer mx-2 p-1.5  bg-pink-200 text-red-500 rounded-sm">
                         {" "}
                         <RiDeleteBinLine />
                       </p>
@@ -143,6 +154,8 @@ const Settings = () => {
         onPageChange={setCurrentPage}
       />
       {addUserModal && <AddUser onclose={() => setAddUserModal(false)} />}
+        {editUserModal && <EditUser onclose={()=>setEditUserModal(false)}/>}
+          {deleteModal && <DeleteModal onclose={()=>setDeleteModal(false)} title="user"/>}
     </>
   );
 };

@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { IoEyeOff, IoEye } from "react-icons/io5";
 import Logo from "../../assets/Cheval Logo.png";
 
 const Login = () => {
+  const location = useLocation();
+  const headingText = location.state?.fromPasswordChange ? "Welcome Back!" : "Login";
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
 
@@ -17,7 +19,7 @@ const Login = () => {
       {/* Right Side - Login Form */}
       <div className="bg-teal-900">
         <div className="bg-black text-white p-8 rounded-lg shadow-lg w-[500px] absolute left-1/3 top-48 mx-6">
-          <h1 className="text-5xl font-bold mb-4">Login</h1>
+          <h1 className="text-5xl font-bold mb-4">{headingText}</h1>
           <p className="text-sm font-light text-gray-400 mb-6">
             Enter your details to log in to your account.
           </p>
