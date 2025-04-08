@@ -131,7 +131,7 @@ const BookingEnquiry = () => {
                       {!biddedRows[data.sno] ? (
                         <p
                           onClick={() => handleBidClick(data.sno)}
-                          className="cursor-pointer px-2 py-1.5 bg-green-100 text-sky-500 rounded-sm"
+                          className="cursor-pointer px-2 py-1.5 bg-sidebar text-black rounded-sm "
                         >
                           Bid Now
                         </p>

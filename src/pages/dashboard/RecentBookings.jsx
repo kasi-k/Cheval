@@ -104,7 +104,7 @@ const RecentBookings = () => {
                       {!biddedRows[data.sno] ? (
                         <p
                           onClick={() => handleBidClick(data.sno)}
-                          className="cursor-pointer px-2 py-1 bg-green-100 text-sky-500 rounded-sm"
+                          className="cursor-pointer px-2 py-1 bg-sidebar text-black rounded-sm "
                         >
                           Bid Now
                         </p>

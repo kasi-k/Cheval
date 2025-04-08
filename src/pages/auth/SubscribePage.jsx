@@ -23,7 +23,7 @@ const SubscribePage = () => {
           />
         </div>
 
-        <div className="bg-teal-900">
+        <div className="bg-sidebar">
           <div className="flex  absolute top-40 left-1/5 gap-6">
             <div className="bg-black text-white w-[450px]  p-8 rounded-lg shadow-lg text-center">
               <ChevronLeft

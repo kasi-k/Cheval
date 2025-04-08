@@ -18,7 +18,7 @@ const SignUp = () => {
         </div>
 
         {/* Right Side - Login Form */}
-        <div className="bg-teal-900">
+        <div className="bg-sidebar">
           <div className="bg-black text-white w-[450px]  p-8 rounded-lg shadow-lg absolute top-36 left-1/3">
             <h1 className="text-5xl font-bold  my-4">Register</h1>
             <p className=" text-base font-extralight text-gray-100 mb-6">

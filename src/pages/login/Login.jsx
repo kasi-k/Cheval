@@ -17,7 +17,7 @@ const Login = () => {
       </div>
 
       {/* Right Side - Login Form */}
-      <div className="bg-teal-900">
+      <div className="bg-sidebar">
         <div className="bg-black text-white p-8 rounded-lg shadow-lg w-[500px] absolute left-1/3 top-48 mx-6">
           <h1 className="text-5xl font-bold mb-4">{headingText}</h1>
           <p className="text-sm font-light text-gray-400 mb-6">

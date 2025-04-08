@@ -18,7 +18,7 @@ const ResetPassword = () => {
         />
       </div>
 
-      <div className="bg-teal-900">
+      <div className="bg-sidebar">
         <div className="bg-black text-white p-8 rounded-lg shadow-lg w-[500px] absolute left-1/3 top-48 mx-6 space-y-4">
         <ChevronLeft onClick={()=>navigate("/forgot_password")} className="bg-darkgray px-2 size-10 my-2 rounded-md" />
           <h1 className="text-5xl font-bold mb-4">Reset Password</h1>

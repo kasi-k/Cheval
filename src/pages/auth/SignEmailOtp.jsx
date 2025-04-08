@@ -47,7 +47,7 @@ const SignPhoneOtp = () => {
       </div>
 
       {/* Right Side - OTP Input */}
-      <div className="bg-teal-900">
+      <div className="bg-sidebar">
         <div className="bg-black text-white w-[450px] p-8 rounded-lg shadow-lg absolute top-36 left-1/3">
           <ChevronLeft
             onClick={() => navigate("/phone_otpsignup")}
